@@ -62,7 +62,12 @@ agy-pptx-studio/
 ```bash
 git clone https://github.com/YuJunWang/agy-pptx-studio.git
 ```
-*(將專案內的兩個 plugin 資料夾直接放進或連結至 `C:\Users\wang6\.gemini\config\plugins` 即可生效。)*
+*(將專案內的兩個 plugin 資料夾直接放進或連結至你的 Antigravity `.gemini/config/plugins` 目錄下即可生效。)*
+
+### 2. 指令範例 (Usage Example)
+你可以透過一段完整的 Prompt 來直接啟動多代理人協作流程，讓大腦為你調度一切：
+
+> 「根據這兩年的咖啡產業資訊研究，製作一份用於創投的 15 分鐘簡報，以麥肯錫商業顧問的簡報風格執行，盡可能包含所需要的數據與圖表，其他沒有決定的細節由你決定。」
 
 ## 👨‍💻 作者 (Author)
 **Yu-Jun Wang**

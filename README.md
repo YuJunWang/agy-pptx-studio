@@ -62,7 +62,12 @@ Clone this project and link the plugins to your Antigravity configuration:
 ```bash
 git clone https://github.com/YuJunWang/agy-pptx-studio.git
 ```
-*(Place or symlink the two plugin folders into `C:\Users\wang6\.gemini\config\plugins` to enable them in your workspace.)*
+*(Place or symlink the two plugin folders into your Antigravity `.gemini/config/plugins` directory to enable them in your workspace.)*
+
+### 2. Usage Example
+To trigger the complete multi-agent workflow, you can simply use a comprehensive prompt like this:
+
+> "Based on the coffee industry research from the past two years, create a 15-minute pitch deck for venture capitalists. Execute this in a McKinsey consulting presentation style, including as much data and as many charts as necessary. You can decide on any other unspecified details."
 
 ## 👨‍💻 Author
 **Yu-Jun Wang**
