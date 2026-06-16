@@ -4,10 +4,14 @@
 
 > "agy-pptx-studio is not just a formatting tool; it's a highly modular, aesthetic-driven automated presentation production line."
 
-![Project Status](https://img.shields.io/badge/Status-Active-success)
+![Release Status](https://img.shields.io/badge/Release-Public_Beta-orange)
 ![Architecture](https://img.shields.io/badge/Architecture-Multi--Agent-purple)
 ![Framework](https://img.shields.io/badge/Framework-Antigravity-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> [!IMPORTANT]
+> **🚀 Public Beta Notice**
+> This ecosystem is currently in the Public Beta phase. Some multi-agent workflows and image generation boundaries are subject to change in future releases.
 
 **"About agy-pptx-studio"**
 

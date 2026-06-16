@@ -4,10 +4,14 @@
 
 > 「agy-pptx-studio 不僅是一個排版工具，更是一個具備美學意識與高度模組化的自動化簡報生產線。」
 
-![Project Status](https://img.shields.io/badge/Status-Active-success)
+![Release Status](https://img.shields.io/badge/Release-Public_Beta-orange)
 ![Architecture](https://img.shields.io/badge/Architecture-Multi--Agent-purple)
 ![Framework](https://img.shields.io/badge/Framework-Antigravity-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> [!IMPORTANT]
+> **🚀 Beta 階段提示 (Public Beta Phase)**
+> 本專案目前處於 Beta 測試階段。部分多代理人工作流 (Multi-Agent Workflow) 與生圖 API 的邊界條件可能會在未來的版本中進行調整。
 
 **「關於 agy-pptx-studio」**
 
