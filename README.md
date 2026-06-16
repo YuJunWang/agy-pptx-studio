@@ -67,7 +67,7 @@ git clone https://github.com/YuJunWang/agy-pptx-studio.git
 ### 2. Usage Example
 To trigger the complete multi-agent workflow, you can simply use a comprehensive prompt like this:
 
-> "Based on the coffee industry research from the past two years, create a 15-minute pitch deck for venture capitalists. Execute this in a McKinsey consulting presentation style, including as much data and as many charts as necessary. You can decide on any other unspecified details."
+> "Based on coffee industry research from the past two years, act as a local coffee supplier in Taiwan and create a 15-minute pitch deck for venture capitalists. Execute this in a McKinsey consulting presentation style, including as much data and as many charts as necessary. You can decide on any other unspecified details."
 
 ## 👨‍💻 Author
 **Yu-Jun Wang**
