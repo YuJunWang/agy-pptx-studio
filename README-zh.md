@@ -6,32 +6,37 @@
 
 這個儲存庫集中了所有用來建立、排版與生成豐富投影片所需的工具、技能 (Skills) 與外掛 (Plugins)，並交由 Antigravity AI 代理人來執行。透過領域驅動設計 (DDD)，我們確保這個生態系內的所有功能都具有高度凝聚力，且完全針對「簡報製作」進行最佳化。
 
-## 包含的外掛 (Plugins)
+---
 
-本儲存庫包含兩個核心外掛，它們協同工作以提供無縫的簡報生成工作流：
+## 1. 多代理人協作流程 (Presentation Architect Workflow)
+[資料夾位置: `./presentation_architect`](./presentation_architect)
 
-### 1. [presentation-architect](./presentation_architect)
-這是一個多代理人 (Multi-Agent) 部門架構的外掛，作為專注於生成高美感、工作流驅動 PPTX 簡報的核心大腦。
-- **presentation-orchestrator (總指揮)**：主要的入口點，負責調度部門內的各項簡報製作任務。
-- **presentation-researcher (研究員)**：負責蒐集數據、執行深度分析並提供簡報所需的洞察資訊。
-- **presentation-strategist (策略師)**：建構敘事故事板 (Storyboard)，並產出核心的 YAML 藍圖架構。
-- **presentation-engineer (實作工程師)**：使用 `pptxgenjs` 執行藍圖，套用設計系統並渲染出最終的 `.pptx` 簡報檔。
+此核心外掛被設計為一個 **「多代理人部門 (Multi-Agent Department)」**，作為生成高質感簡報的大腦。這套工作流會透過 **總指揮 (presentation-orchestrator)** 接收使用者的初始指令，並嚴格依照順序分配給專責的子代理人執行：
 
-### 2. [antigravity-image-master](./antigravity-image-master)
-作為視覺素材的生成中心，使用指揮官模式來管理進階提示詞與圖片比例裁切任務。
-- **image-generation-orchestrator (生圖調度中心)**：主要的控制中心，負責判斷圖片比例、挑選合適的公式，並自動執行物理裁切腳本以符合簡報尺寸。
-- **image-generation-formula (通用生圖公式)**：一個 7 層結構的提示詞公式，用於生成高度擬真、場景、插畫與電影感的圖像。
-- **background-generation-formula (背景生圖公式)**：一個 4 層結構的提示詞公式，專門為了簡報底圖、UI 背景或需要疊加文字的場景所最佳化。
-- **diagram-generation-formula (圖表生圖公式)**：一個 5 層結構的提示詞公式，專為時間軸、漏斗圖、循環圖等具象化概念圖表所設計。
+1. **資料收集 (presentation-researcher)**：流程的第一步會先蒐集原始資料、進行深度分析並萃取出必要的洞察資訊，輸出為純文字的研究檔案。
+2. **敘事建構 (presentation-strategist)**：接收原始資料後，建構出具有邏輯且引人入勝的敘事故事板 (Storyboard)，決定投影片的起承轉合並產出文字大綱。
+3. **風格與素材分配 (presentation-art-director)**：根據大綱套用嚴格的設計系統與網格限制，選擇合適的字體與配色，並調用生圖工具來產生需要的視覺素材，最終完成高度規格化的 YAML 藍圖 (`_blueprint.yaml`)。
+4. **實作渲染 (presentation-engineer)**：接收最終的藍圖，使用 `pptxgenjs` (Node.js 函式庫) 渲染並輸出實體的 `.pptx` 簡報檔案。
 
-## 協同運作方式
+### 風格版規劃工程師與舊檔翻新
+這個生態系中還包含一位特別的 **「風格版規劃工程師 (presentation-style-architect)」**，專門負責設計嚴謹的網格排版與高彈性的色彩系統。
+- **匯入現有簡報 (舊檔翻新)**：當使用者提供一份舊的 `.pptx` 檔案時，總指揮會呼叫特製的 Python 腳本 (`extract_pptx.py`) 擷取純文字大綱。規劃工程師接著就能分析這個大綱，將其完美映射到現代美學的排版網格上，確保在套用新風格的同時，原有的內容架構完全不被破壞。
 
-1. **策略規劃 (The Strategist)**：工作流程通常從 `presentation-architect` 開始，代理人會在此建構故事板，並決定每一頁需要的視覺素材。
-2. **藝術指導 (The Art Director)**：當投影片需要客製化圖形、資訊圖表或背景時，會呼叫 `antigravity-image-master` 外掛來生成精確的視覺素材。
-3. **實作工程 (The Engineer)**：最後，`presentation-architect` 會將生成的文字與圖片整合，根據選擇的風格模板，完美地合併成最終的 PPTX 檔案。
+---
+
+## 2. 繪圖功能深度改造 (Image Generation Enhancements)
+[資料夾位置: `./antigravity-image-master`](./antigravity-image-master)
+
+此模組作為簡報視覺素材的生成中心。它深度改造並強化了 Antigravity 內建的 `generate_image` 指令，解決了原生工具的多項限制，確保能產出適合簡報使用的專業級素材。
+
+### 核心功能改造：
+- **無文字/無主角的簡報底圖**：原生的生圖工具很容易產出包含亂碼或元素過度擁擠的圖像。我們設計的 `background-generation-formula` 會強制加上極嚴格的限制（例如：`NO TEXT, NO WORD`），專門用來生成極致乾淨、閱讀性極高的簡報底圖與 UI 背景。
+- **提示詞強化器 (Prompt Enhancer)**：包含用於生成高品質電影感插畫的「7 層結構公式 (`image-generation-formula`)」，以及專為時間軸、漏斗圖、循環圖等抽象概念設計的「5 層圖表結構公式 (`diagram-generation-formula`)」。
+- **突破比例限制的裁切腳本**：Antigravity 內建的生圖指令目前只能輸出 1:1 的正方形圖片。為了解決這個問題，調度中心使用了一種巧妙的「留白填充 (Padding Prompt)」技巧來生成被包裹在正方形中的寬螢幕圖像，接著自動呼叫一段 Python 腳本 (`crop_image.py`)，將圖片物理裁切成精確的 16:9、9:16 或任何簡報所需的自訂比例。
+
+---
 
 ## 開始使用
-
 *(未來的使用說明、環境設定與前置需求將會記錄於此。)*
 
 ---
