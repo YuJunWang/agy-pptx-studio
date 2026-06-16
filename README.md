@@ -11,14 +11,18 @@ This repository centralizes tools, skills, and plugins necessary to construct, s
 This repository contains two core plugins that work together to provide a seamless presentation generation workflow:
 
 ### 1. [presentation-architect](./presentation_architect)
-An AI agent skill and ecosystem for generating highly aesthetic, workflow-driven PPTX presentations.
-- **Purpose**: Acts as the brain of the operation. It uses decoupled style JSON files to map narrative structures to actual PPTX slide layouts.
-- **Capabilities**: Translates ideas into structures, applies visual styles, and uses Node.js logic to render actual `.pptx` files.
+This plugin has been structured as a multi-agent department, acting as the brain for generating highly aesthetic, workflow-driven PPTX presentations.
+- **presentation-orchestrator**: The main entry point that delegates tasks across the department.
+- **presentation-researcher**: Gathers data, performs analysis, and provides necessary insights.
+- **presentation-strategist**: Constructs the narrative storyboard and generates the foundational YAML Blueprint.
+- **presentation-engineer**: Executes the blueprint using `pptxgenjs`, applying design systems and rendering the final `.pptx` file.
 
 ### 2. [antigravity-image-master](./antigravity-image-master)
-Advanced prompt engineering methodologies, templates, and tools for specific AI image generation tasks.
-- **Purpose**: Serves as the visual asset creator for your slides.
-- **Capabilities**: Generates custom aspect-ratio images, background layouts, and structural diagrams specifically tailored to fit the constraints and aesthetics of modern slide decks.
+This plugin serves as the visual asset creator, using an orchestrator to manage advanced prompt engineering tasks and aspect-ratio crops.
+- **image-generation-orchestrator**: The primary controller that decides aspect ratios, picks the right formula, and manages physical image cropping scripts.
+- **image-generation-formula**: A 7-layer structural formula for high-fidelity scenes, illustrations, and cinematic graphics.
+- **background-generation-formula**: A 4-layer structural formula specifically optimized for presentation slide backgrounds and UI overlays.
+- **diagram-generation-formula**: A 5-layer structural formula designed for conceptual visualizations like timelines, funnels, and process cycles.
 
 ## How They Work Together
 
