@@ -1,0 +1,240 @@
+{
+  "anthropic_business_serif": {
+    "name": "Anthropic 商務襯線風 (Business Serif)",
+    "typography": {
+      "english": "Cambria",
+      "chinese": "思源宋體 (Source Han Serif)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 4,
+      "max_text_density": "Medium. Elegant pacing.",
+      "layout": "Formal. Solid dark left bars or headers. Sophisticated and authoritative."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.RECTANGLE with sharp corners. Thin, elegant connecting lines. Use formal table layouts for data.",
+      "yaml_style": "Blueprint, minimal, architectural, isometric with gold/navy accents."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Corporate, professional, high-end, subtle, elegant lighting, NO TEXT"
+    }
+  },
+  "anthropic_data_terminal": {
+    "name": "Anthropic 數據工程風 (Data Terminal)",
+    "typography": {
+      "english": "Consolas",
+      "chinese": "微軟正黑體 (Microsoft JhengHei)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 5,
+      "max_text_density": "High but structured. Code-like precision.",
+      "layout": "Grid-based layout, extreme alignment, use of crosshairs and small technical labels."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.RECTANGLE with sharp corners. Thin neon grid lines. Monospace data labels.",
+      "yaml_style": "Cyber-minimalism, dark mode terminal, blueprint wireframes, precise."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Cyberpunk, minimal, dark mode, glowing lines, data matrix, precise, NO TEXT"
+    }
+  },
+  "anthropic_high_impact": {
+    "name": "Anthropic 強衝擊風 (High-Impact Display)",
+    "typography": {
+      "english": "Impact",
+      "chinese": "思源黑體 Bold (Source Han Sans Bold)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 3,
+      "max_text_density": "Low. Punchy phrases.",
+      "layout": "Split screens (e.g. half yellow, half black), massive typography, extreme contrast."
+    },
+    "chart_rules": {
+      "native_shapes": "Massive geometric blocks. Thick connecting lines. High contrast colored data bars.",
+      "yaml_style": "Bold poster graphic, extreme contrast wireframe, aggressive 3D structure."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Bold, dynamic, high contrast, poster style, striking, NO TEXT"
+    }
+  },
+  "anthropic_material_design": {
+    "name": "Anthropic 現代應用風 (Material Design)",
+    "typography": {
+      "english": "Roboto",
+      "chinese": "思源黑體 (Source Han Sans)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 4,
+      "max_text_density": "Medium. Highly legible and structured.",
+      "layout": "Card-based UI, subtle drop shadows, clear visual hierarchy, ample padding."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.ROUNDED_RECTANGLE (radius 12px). Distinct layers, flat colors with one vibrant accent.",
+      "yaml_style": "Material design, clean UI dashboard, layered cards, soft light, vector illustration."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Material design, clean, flat illustration, corporate UI, clear, NO TEXT"
+    }
+  },
+  "anthropic_modern_sans": {
+    "name": "Anthropic 現代無襯線風 (Modern Sans-Serif)",
+    "typography": {
+      "english": "Calibri",
+      "chinese": "思源黑體 (Source Han Sans)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 5,
+      "max_text_density": "Medium-High. Clean and versatile.",
+      "layout": "Lots of whitespace, modern cards, simple lines, horizontal rules."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.ROUNDED_RECTANGLE. Clean horizontal Gantt charts. Spacious flowcharts.",
+      "yaml_style": "Flat Vector, Isometric 3D Glassmorphism, clean digital UI, pure background."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Clean, flat design, modern, bright, relatable, NO TEXT"
+    }
+  },
+  "anthropic_tech_startup": {
+    "name": "Anthropic 科技新創風 (Tech Startup)",
+    "typography": {
+      "english": "Montserrat",
+      "chinese": "Taipei Sans TC Beta"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 3,
+      "max_text_density": "Low-Medium. High visual impact.",
+      "layout": "Vibrant, asymmetrical grid, large bold headers, strong color contrasts."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.ROUNDED_RECTANGLE (radius 16px). Thick soft borders.",
+      "yaml_style": "Modern app design, vibrant colors, soft shadows, 3D claymorphism."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Vibrant, startup, clean, 3D abstract, modern tech, NO TEXT"
+    }
+  },
+  "anthropic_tech_ui": {
+    "name": "Anthropic 科技介面風 (Tech UI Modern)",
+    "typography": {
+      "english": "Segoe UI",
+      "chinese": "微軟正黑體 (Microsoft JhengHei)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 4,
+      "max_text_density": "Medium. Smooth and readable.",
+      "layout": "Modern UI cards, spacious margins, clean web-like layout."
+    },
+    "chart_rules": {
+      "native_shapes": "MSO_SHAPE.ROUNDED_RECTANGLE (radius 8px). Simple, flat data visualization.",
+      "yaml_style": "Flat UI, modern web design, smooth gradients, Apple-like minimalism."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Clean, UI/UX, tech, bright, modern, minimalist, NO TEXT"
+    }
+  },
+  "consulting_analysis": {
+    "name": "Consulting Analysis",
+    "background": "Pure White (#FFFFFF)",
+    "text_color": "Dark Gray (#333333)",
+    "accent_colors": [
+      "Corporate Navy (#002060)",
+      "Crimson Red (#C00000) for emphasis",
+      "Ice Blue (#DCE6F1) for table headers"
+    ],
+    "typography": "Professional sans-serif like Arial or Helvetica. Every slide must have a full-sentence Action Title.",
+    "constraints": {
+      "max_bullets_per_slide": 6,
+      "max_text_density": "High. Structured layouts. Logic-driven.",
+      "layout": "2-column or 3-column grids. Use strict alignment, traditional consulting matrix tables, and clear visual hierarchy."
+    },
+    "visuals": {
+      "allow_ai_images": false,
+      "image_prompt_rules": "N/A - Do not generate AI images. Use clean PPT shapes, structural diagrams, or data tables."
+    }
+  },
+  "swiss_deconstruct": {
+    "name": "Swiss Deconstructivism",
+    "background": "Stark Gray-White (#F4F4F4)",
+    "text_color": "Pitch Black (#000000)",
+    "accent_colors": [
+      "Swiss Red (#FF0000)"
+    ],
+    "typography": "Arial Black or Helvetica Black. Extremely large typography. Brutalist scale.",
+    "constraints": {
+      "max_bullets_per_slide": 2,
+      "max_text_density": "Minimalist. Treat text as art and geometry.",
+      "layout": "Asymmetrical, brutalist, broken grid. Large overlapping text and solid red rectangles."
+    },
+    "visuals": {
+      "allow_ai_images": false,
+      "image_prompt_rules": "No AI images. Use only typography and geometric vector shapes."
+    }
+  },
+  "tech_minimal": {
+    "name": "Tech Minimalist",
+    "background": "Deep Space Gray (#0D1117)",
+    "text_color": "White (#FFFFFF)",
+    "accent_colors": [
+      "Spark Blue (#4285F4)",
+      "Warm Orange (#EA4335)",
+      "Neon Green (#34A853)"
+    ],
+    "typography": "Large, bold headings. Google Sans or similar modern sans-serif.",
+    "constraints": {
+      "max_bullets_per_slide": 3,
+      "max_text_density": "Very Low. Use one big idea per slide.",
+      "layout": "Frameless design, massive negative space. No traditional grid tables; use modern cards."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "abstract, 3D render, dark background, glowing neon, futuristic, clean, NO TEXT, highly aesthetic"
+    }
+  },
+  "structural_minimalism": {
+    "name": "結構化極簡 (Structural Minimalism) / 專業顧問風",
+    "typography": {
+      "english": "Calibri or Helvetica",
+      "chinese": "微軟正黑體 (Microsoft JhengHei)"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 4,
+      "max_text_density": "Structured. Clear logical hierarchy with concepts vs details.",
+      "layout": "Eliminate unnecessary decoration. Strict grids, sharp alignment, geometric cuts. High reliance on native shapes for logic diagrams. Title: 44-54pt, Subtitle: 24-32pt, Body: 16-20pt (line height 1.2-1.5)."
+    },
+    "chart_rules": {
+      "native_shapes": "Strict geometry, logic flowcharts, high contrast structural shapes.",
+      "yaml_style": "Minimalist, flat vector, structured, clear hierarchy."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Minimalist, flat vector, clean sharp lines, solid background, NO TEXT, no complex 3D rendering, highly structured."
+    }
+  },
+  "organic_narrative": {
+    "name": "有機敘事 (Organic Narrative) / 沉浸式氛圍",
+    "typography": {
+      "english": "Garamond or Playfair Display",
+      "chinese": "明體/宋體 (Source Han Serif) for Titles, 現代黑體 (Source Han Sans Light) for Body"
+    },
+    "constraints": {
+      "max_bullets_per_slide": 3,
+      "max_text_density": "Low. Emotional pacing. Breathable whitespace.",
+      "layout": "Full-bleed backgrounds with blurred borders. Text floats on canvas with generous horizontal/vertical whitespace. Use large serif numbers (01, 02) as visual anchors. Title: 48pt+, Body: 14-18pt."
+    },
+    "chart_rules": {
+      "native_shapes": "Organic placement, cards that blend into the background, soft opacity.",
+      "yaml_style": "Immersive exhibition catalog, organic narrative, elegant."
+    },
+    "visuals": {
+      "allow_ai_images": true,
+      "image_prompt_rules": "Abstract flowing liquid marble, organic soft waves, two-tone smooth gradient of soft sage green and warm sandy beige, smoky silk texture, soft diffused lighting, tranquil and ethereal atmosphere, NO TEXT."
+    }
+  }
+}

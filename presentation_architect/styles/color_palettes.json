@@ -1,0 +1,102 @@
+{
+  "01_business_blue": {
+    "name": "深夜行政藍 (Business Blue)",
+    "description": "商務、財經、企業嚴謹實例",
+    "colors": [
+      "#1E2761",
+      "#CADCFC",
+      "#FFFFFF"
+    ],
+    "complementary_color": "#FFB84D"
+  },
+  "02_forest_moss": {
+    "name": "森林與苔蘚 (Forest Moss)",
+    "description": "環保、自然、健康主題",
+    "colors": [
+      "#2C5F2D",
+      "#97BC62",
+      "#F5F5F5"
+    ],
+    "complementary_color": "#D9534F"
+  },
+  "03_coral_vitality": {
+    "name": "珊瑚活力 (Coral Vitality)",
+    "description": "活力滿滿、生活、年輕",
+    "colors": [
+      "#F96167",
+      "#F9E795",
+      "#2F3C7E"
+    ],
+    "complementary_color": "#00C9A7"
+  },
+  "04_warm_terracotta": {
+    "name": "暖陶士 (Warm Terracotta)",
+    "description": "文化、旅遊、復古質感",
+    "colors": [
+      "#B85042",
+      "#E7EBD1",
+      "#A7B8AE"
+    ],
+    "complementary_color": "#4B8BBE"
+  },
+  "05_ocean_gradient": {
+    "name": "海洋漸層 (Ocean Gradient)",
+    "description": "科技、知識、科醫題材",
+    "colors": [
+      "#065A82",
+      "#1C7293",
+      "#21295C"
+    ],
+    "complementary_color": "#FF9F1C"
+  },
+  "06_charcoal_minimal": {
+    "name": "炭灰極簡 (Charcoal Minimal)",
+    "description": "極簡、攝影、雜誌風格",
+    "colors": [
+      "#36454F",
+      "#F2F2F2",
+      "#212121"
+    ],
+    "complementary_color": "#E74C3C"
+  },
+  "07_cyan_trust": {
+    "name": "青藍信任 (Cyan Trust)",
+    "description": "醫療、信任感、金融科技",
+    "colors": [
+      "#028090",
+      "#00A896",
+      "#02C39A"
+    ],
+    "complementary_color": "#FF7B54"
+  },
+  "08_berry_cream": {
+    "name": "莓果奶油 (Berry Cream)",
+    "description": "美食、女性向、生活時尚",
+    "colors": [
+      "#6D214E",
+      "#A26769",
+      "#ECE2D0"
+    ],
+    "complementary_color": "#85C1E9"
+  },
+  "09_sage_healing": {
+    "name": "鼠尾草療癒 (Sage Healing)",
+    "description": "療癒、心理、冥想空間",
+    "colors": [
+      "#84B59F",
+      "#69A297",
+      "#50808E"
+    ],
+    "complementary_color": "#E59866"
+  },
+  "10_intense_cherry": {
+    "name": "強烈櫻桃 (Intense Cherry)",
+    "description": "強力奪目、時尚、運動熱情",
+    "colors": [
+      "#990011",
+      "#FCF6F5",
+      "#2F3C7E"
+    ],
+    "complementary_color": "#F1C40F"
+  }
+}

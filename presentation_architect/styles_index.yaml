@@ -1,0 +1,31 @@
+registry_version: "1.0"
+description: "Central repository of all generated presentation design styles. Used by presentation-style-architect to prevent duplicates and manage aesthetic assets."
+
+styles:
+  - id: "presentation-style-floating-cards"
+    name: "Floating Cards"
+    vibe: "Warm, Friendly, Modern SaaS, Educational"
+    tags: ["saas", "warm", "shadows", "rounded", "modern", "friendly"]
+    layouts_included: ["cover", "bridge", "scale-balance", "iceberg", "equation", "comparison-table", "do-dont", "circular-flow", "journey-path", "grid-cards", "nested-circles"]
+    description: "A highly detailed aesthetic with depth, floating elements, and gentle shadows. Excellent for complex information delivery without feeling intimidating."
+    
+  - id: "presentation-style-swiss"
+    name: "Swiss International Typographic Style"
+    vibe: "Authoritative, Aggressive, Minimalist, Technical"
+    tags: ["swiss", "typography", "grid", "minimalist", "high-contrast", "authoritative", "bold"]
+    layouts_included: ["swiss-massive", "swiss-feature", "swiss-split"]
+    description: "Massive fonts, absolute grid alignment, and minimalist aesthetics. Highly authoritative, best for technical documentation, architectural pitches, or bold manifestos."
+    
+  - id: "presentation-style-business-wireframe"
+    name: "Business Wireframe"
+    vibe: "Corporate, Professional, Clean, Structured"
+    tags: ["business", "wireframe", "corporate", "clean", "structured", "stroke"]
+    layouts_included: ["business-cover", "business-section", "business-split", "business-dark-card", "business-grid-2", "business-grid-3", "business-compare", "business-process-4"]
+    description: "A highly structured layout using thin horizontal dividers and stroke-bordered cards (both rounded and sharp). It emphasizes discipline, clarity, and professionalism. Best suited for B2B, corporate, and formal contexts."
+    
+  - id: "presentation-style-vscode-ide"
+    name: "VS Code IDE"
+    vibe: "Geeky, Developer-Centric, Hardcore Tech, Dark Mode"
+    tags: ["developer", "ide", "vscode", "dark-mode", "code", "tech"]
+    layouts_included: ["vscode-cover", "vscode-mac-window", "vscode-agent-grid", "vscode-chat-flow"]
+    description: "Wraps the entire presentation in a mock Visual Studio Code UI. Uses syntax highlighting colors, monospace fonts, and programming metaphors. Excellent for pitching architectures to engineers and CTOs."
