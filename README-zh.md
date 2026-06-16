@@ -31,11 +31,22 @@
 * **🛠️ 實作工程師 (presentation-engineer)**：
     接收最終的藍圖，使用 `pptxgenjs` (Node.js 函式庫) 渲染並輸出實體的 `.pptx` 簡報檔案。
 
-### 2. 🏛️ 風格版規劃工程師與舊檔翻新 (Style Architect & Renovation)
+### 2. 🎨 內建風格版型 (Built-in Style Templates)
+本專案目前已內建並初步測試了 6 種不同美學流派的風格技能包 (Style Skills)，供藝術指導 (Art Director) 調用：
+* `business-wireframe`: 商業線框風格 (適合 B2B 簡報)
+* `floating-cards`: 現代浮動卡片風格 (適合 SaaS、教育)
+* `magazine`: 雜誌排版風格 (適合人文、設計)
+* `swiss` & `swiss-simple`: 瑞士極簡排版風格 (適合顧問、工程)
+* `vscode-ide`: 開發者 IDE 風格 (適合技術與架構分享)
+
+> [!NOTE]
+> 雖然這些版型已經過初步測試，但由於排版引擎的靈活性極高，目前要真正投入生產環境 (Production-ready) 之前，仍需透過實際使用進行個人化的微調。
+
+### 3. 🏛️ 風格版規劃工程師與舊檔翻新 (Style Architect & Renovation)
 這個生態系中還包含一位特別的 **「風格版規劃工程師 (presentation-style-architect)」**，專門負責設計嚴謹的網格排版與高彈性的色彩系統。
 * **匯入現有簡報 (舊檔翻新)**：當使用者提供一份舊的 `.pptx` 檔案時，總指揮會呼叫特製的 Python 腳本 (`extract_pptx.py`) 擷取純文字大綱。規劃工程師接著就能分析這個大綱，將其完美映射到現代美學的排版網格上，確保在套用新風格的同時，原有的內容架構完全不被破壞。
 
-### 3. 🖼️ 繪圖功能深度改造 (Image Generation Enhancements)
+### 4. 🖼️ 繪圖功能深度改造 (Image Generation Enhancements)
 此模組作為簡報視覺素材的生成中心。它深度改造並強化了 Antigravity 內建的 `generate_image` 指令，解決了原生工具的多項限制，確保能產出適合簡報使用的專業級素材。
 
 * **無文字/無主角的簡報底圖**：原生的生圖工具很容易產出包含亂碼或元素過度擁擠的圖像。我們設計的 `background-generation-formula` 會強制加上極嚴格的限制（例如：`NO TEXT, NO WORD`），專門用來生成極致乾淨、閱讀性極高的簡報底圖與 UI 背景。

@@ -31,11 +31,22 @@ This core plugin is structured as a **Multi-Agent Department**, acting as the br
 * **🛠️ Engineer (presentation-engineer)**:
     Executes the blueprint using the `pptxgenjs` Node.js library to render the final, physical `.pptx` file.
 
-### 2. 🏛️ Style Architect & Renovation
+### 2. 🎨 Built-in Style Templates
+This project currently includes and has preliminarily tested 6 different aesthetic style skills for the Art Director to utilize:
+* `business-wireframe`: Corporate wireframe style (best for B2B)
+* `floating-cards`: Modern floating cards style (best for SaaS, Education)
+* `magazine`: Editorial layout style (best for Humanities, Design)
+* `swiss` & `swiss-simple`: Swiss minimalist typography style (best for Consulting, Engineering)
+* `vscode-ide`: Developer IDE style (best for Tech architectures)
+
+> [!NOTE]
+> While these templates have been tested, the high flexibility of the layout engine means that manual personalization and adjustments based on actual usage are still required before they are truly production-ready.
+
+### 3. 🏛️ Style Architect & Renovation
 This ecosystem also includes a **Style Architect (`presentation-style-architect`)**, a meta-agent responsible for designing rigid layout geometries and highly flexible color systems.
 * **Importing & Renovating Old Decks**: When a user provides an existing `.pptx` file, the orchestrator invokes a specialized Python script (`extract_pptx.py`) to extract the raw text outline. The Style Architect can then analyze this outline and perfectly map it onto modern, aesthetic design grids without breaking the original content structure.
 
-### 3. 🖼️ Image Generation Enhancements
+### 4. 🖼️ Image Generation Enhancements
 This module serves as the visual asset creator. It heavily modifies and enhances Antigravity's built-in `generate_image` command, overcoming native limitations to produce production-ready assets.
 
 * **Zero-Text / Zero-Subject Backgrounds**: The native image generation often creates messy images. Our `background-generation-formula` enforces strict rules (`NO TEXT, NO WORD`) to generate clean, highly-readable backgrounds and UI overlays.
