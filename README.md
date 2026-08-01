@@ -31,20 +31,17 @@ This core plugin is structured as a **Multi-Agent Department**, acting as the br
 * **🛠️ Engineer (presentation-engineer)**:
     Executes the blueprint using the `pptxgenjs` Node.js library to render the final, physical `.pptx` file.
 
-### 2. 🎨 Built-in Style Templates
-This project currently includes and has preliminarily tested 6 different aesthetic style skills for the Art Director to utilize:
-* `business-wireframe`: Corporate wireframe style (best for B2B)
-* `floating-cards`: Modern floating cards style (best for SaaS, Education)
-* `magazine`: Editorial layout style (best for Humanities, Design)
-* `swiss` & `swiss-simple`: Swiss minimalist typography style (best for Consulting, Engineering)
-* `vscode-ide`: Developer IDE style (best for Tech architectures)
+### 2. 🎨 Engine-Driven Layout System
+This project has recently been refactored from a Prompt-based dynamic style generator into an **Engine-Driven Architecture** to guarantee absolute layout stability.
+Instead of having the AI calculate `x, y` coordinates and guess layer orderings (which often results in overlapping text and broken designs), we provide a pre-coded layout library:
+* **`layouts_library.md`**: Exposes 20 unified standard layout structures (e.g., L01_Cover, L05_Quote_Split, L13_Horizontal_Timeline) to the Narrative Strategist.
+* **`layouts.js` (The Engine)**: Contains the rigid `pptxgenjs` rendering functions for these 20 layouts, complete with auto-wrapping, collision prevention, and exact coordinate mapping.
 
-> [!NOTE]
-> While these templates have been tested, the high flexibility of the layout engine means that manual personalization and adjustments based on actual usage are still required before they are truly production-ready.
-
-### 3. 🏛️ Style Architect & Renovation
-This ecosystem also includes a **Style Architect (`presentation-style-architect`)**, a meta-agent responsible for designing rigid layout geometries and highly flexible color systems.
-* **Importing & Renovating Old Decks**: When a user provides an existing `.pptx` file, the orchestrator invokes a specialized Python script (`extract_pptx.py`) to extract the raw text outline. The Style Architect can then analyze this outline and perfectly map it onto modern, aesthetic design grids without breaking the original content structure.
+### 3. 🏛️ Decoupled Design System
+To create visual variety without breaking structural layouts, the **Art Director** relies on decoupled data dictionaries instead of ad-hoc LLM styling:
+* **`design_system.md`**: Defines visual rules like border radius, line thickness, and font weight for various vibes (e.g., `Swiss_Minimal`, `Floating_Cards`, `Business_Wireframe`, `Magazine`).
+* **`color_palettes.json`**: Provides strict 3-4 color combinations to ensure visual harmony.
+* **Workflow**: The Art Director simply outputs a pure Data-Driven YAML (e.g., `layout: L03, theme: Swiss, color: Corporate_Navy`). The Engineer feeds this into `layouts.js` to render a flawless, non-overlapping `.pptx`.
 
 ### 4. 🖼️ Image Generation Enhancements
 This module serves as the visual asset creator. It heavily modifies and enhances Antigravity's built-in `generate_image` command, overcoming native limitations to produce production-ready assets.
@@ -64,9 +61,10 @@ This module serves as the visual asset creator. It heavily modifies and enhances
 agy-pptx-studio/
 ├── presentation_architect/      # Core multi-agent presentation generation plugin
 │   ├── plugin.json
-│   ├── skills/                  # Individual subagent skills
+│   ├── skills/                  # Individual subagent skills (Strategist, Art Director, Engineer)
 │   ├── scripts/                 # Python/Node.js utilities (e.g., extract_pptx)
-│   └── styles/                  # Color palettes, typography, and grid systems
+│   ├── engine/                  # Core JS layout engine (layouts.js)
+│   └── styles/                  # Decoupled design systems (design_system.md, layouts_library.md)
 └── antigravity-image-master/    # Visual asset & image generation plugin
     ├── plugin.json
     └── skills/                  # Prompt formulas and ratio cropping tools
