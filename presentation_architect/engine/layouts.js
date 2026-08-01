@@ -60,9 +60,13 @@ function render_L04_Section_Divider(slide, content, themeId, colorPalette) {
 function render_L05_Quote_Split(slide, content, themeId, colorPalette) {
     // 實作 S02_Quote_Split
     slide.background = { color: colorPalette.background };
-    slide.addText(content.quote_or_data, { x: '5%', y: '30%', w: '40%', fontSize: 80, color: colorPalette.accent_colors?.[0] || colorPalette.primary, bold: true, breakLine: true });
+    const quote = content.quote_or_data || content.quote || "";
+    const paragraph = content.paragraph || content.text || "";
+    const author = content.author ? `\n\n— ${content.author}` : "";
+    
+    slide.addText(quote, { x: '5%', y: '20%', w: '40%', h: '60%', fontSize: 50, color: colorPalette.accent_colors?.[0] || colorPalette.primary, bold: true, breakLine: true, align: 'center', valign: 'middle' });
     slide.addShape(slide.pres.ShapeType.line, { x: '50%', y: '20%', w: 0, h: '60%', line: { color: "CCCCCC", width: 1 } });
-    slide.addText(content.paragraph, { x: '55%', y: '25%', w: '40%', fontSize: 20, color: colorPalette.primary, breakLine: true });
+    slide.addText(paragraph + author, { x: '55%', y: '25%', w: '40%', fontSize: 20, color: colorPalette.primary, breakLine: true });
     if(content.bullets) {
         content.bullets.forEach((b, i) => {
             slide.addText("• " + b, { x: '55%', y: 3.5 + (i * 0.6), w: '40%', fontSize: 16, color: "555555" });
@@ -107,9 +111,17 @@ function render_L08_Three_Columns(slide, content, themeId, colorPalette) {
     
     for(let i=0; i<3; i++) {
         const xPos = 5 + (i * 32);
+        const colData = content.columns?.[i] || content[`column_${i+1}`] || {};
+        
         slide.addShape(slide.pres.ShapeType.roundRect, { x: `${xPos}%`, y: '25%', w: '28%', h: '65%', fill: { color: "FFFFFF" }, rectRadius: t.radius, line: t.line, shadow: t.shadow });
         slide.addText(`0${i+1}`, { x: `${xPos}%`, y: '70%', w: '28%', fontSize: 60, color: "F0F0F0", align: 'center' }); // Massive background number
-        slide.addText(content.columns?.[i]?.title || "", { x: `${xPos+2}%`, y: '28%', w: '24%', fontSize: 20, color: colorPalette.primary, bold: true });
+        slide.addText(colData.title || "", { x: `${xPos+2}%`, y: '28%', w: '24%', fontSize: 20, color: colorPalette.primary, bold: true });
+        
+        if(colData.bullets) {
+            colData.bullets.forEach((b, j) => {
+                slide.addText("• " + b, { x: `${xPos+2}%`, y: 3.5 + (j * 0.5), w: '24%', fontSize: 16, color: "555555" });
+            });
+        }
     }
 }
 
@@ -117,7 +129,23 @@ function render_L08_Three_Columns(slide, content, themeId, colorPalette) {
 // Other layouts (L09 - L20) are explicitly defined as empty stubs
 // to be filled out by the execution engineer in the future.
 // ---------------------------------------------------------
-function render_L09_Four_Grid(slide, content, themeId, colorPalette) {}
+function render_L09_Four_Grid(slide, content, themeId, colorPalette) {
+    const t = getThemeConfig(themeId);
+    slide.background = { color: colorPalette.background };
+    slide.addText(content.title, { x: '5%', y: '5%', w: '90%', fontSize: 36, color: colorPalette.primary, bold: t.titleWeight === "bold" });
+    
+    for (let i = 0; i < 4; i++) {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        const xPos = 10 + (col * 42);
+        const yPos = 20 + (row * 38);
+        const cardData = content.cards?.[i] || content[`card_${i+1}`] || {};
+        
+        slide.addShape(slide.pres.ShapeType.roundRect, { x: `${xPos}%`, y: `${yPos}%`, w: '38%', h: '32%', fill: { color: "FFFFFF" }, rectRadius: t.radius, line: t.line, shadow: t.shadow });
+        slide.addText(cardData.title || "", { x: `${xPos+2}%`, y: `${yPos+3}%`, w: '34%', fontSize: 20, color: colorPalette.primary, bold: true });
+        slide.addText(cardData.description || cardData.text || "", { x: `${xPos+2}%`, y: `${yPos+12}%`, w: '34%', fontSize: 14, color: "555555" });
+    }
+}
 function render_L10_Dark_Card(slide, content, themeId, colorPalette) {}
 function render_L11_Metric_Dashboard(slide, content, themeId, colorPalette) {}
 function render_L12_Compare(slide, content, themeId, colorPalette) {}
