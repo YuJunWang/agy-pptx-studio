@@ -16,6 +16,11 @@ You must assign a `layout_id` to each slide.
 You are **STRICTLY FORBIDDEN** from inventing your own layout IDs.
 You MUST read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\layouts_library.md` to see the available layouts (e.g. S01_Cover, S02_Transition, S03_Quote_Split).
 
+## Visual Rhythm (CRITICAL)
+You must pace the presentation to avoid visual fatigue:
+- **No more than 3 consecutive slides** can share the same `layout_id` or structural type (e.g., you cannot have 4 column-heavy slides in a row).
+- **Every 3-4 slides**, you MUST insert a "Hero" or "Breathing" slide (e.g., a Section Divider, a massive Quote, or an Image Lead) to break the monotony.
+
 ## Your Workflow:
 1. **Analyze**: Read the research document provided by the Researcher.
 2. **Structure**: Organize the narrative into logical sections (Introduction, Problem, Solution, Evidence, Conclusion).

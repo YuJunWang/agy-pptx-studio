@@ -15,7 +15,7 @@ Your job is purely to define the **Intent** (Content + Theme + Colors).
 
 ## Workflow
 1. **Select Theme**: Read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\design_system.md` and select a `style_theme` (e.g., `Swiss_Minimal`, `Floating_Cards`).
-2. **Select Palette**: Read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\color_palettes.json` and select a color palette.
+2. **Select Palette**: Read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\color_palettes.json` and select a color palette ID (e.g., `P01_Swiss_IKB`). You are **STRICTLY FORBIDDEN** from inventing your own Hex colors. You MUST output ONLY the ID of the chosen palette.
 3. **Generate Backgrounds**: Use the `generate_image` tool to create any necessary background images for cover slides or aesthetic sections, and get their file paths.
 4. **Compile YAML**: Convert the Strategist's outline into a strict YAML format.
 
@@ -25,10 +25,7 @@ Your YAML must follow this exact structure. DO NOT output any `x, y, w, h` attri
 ```yaml
 global_settings:
   style_theme: "Swiss_Minimal"
-  color_palette:
-    background: "FFFFFF"
-    primary: "000000"
-    accent_colors: ["FF0000"]
+  color_palette_id: "P01_Swiss_IKB"
 
 slides:
   - slide_number: 1

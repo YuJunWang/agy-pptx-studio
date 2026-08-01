@@ -15,6 +15,29 @@ function getThemeConfig(themeId) {
 }
 
 // ---------------------------------------------------------
+// 引擎防呆機制 (Engine Safeguards)
+// ---------------------------------------------------------
+function calculateFontSize(text, baseSize) {
+    if (!text) return baseSize;
+    // 簡單的中文字元長度估算
+    const charCount = text.length;
+    if (charCount > 15) {
+        console.warn(`[Safeguard] Text length (${charCount}) exceeds safe limits. Auto-scaling font size down 25%. Text: "${text.substring(0, 10)}..."`);
+        return Math.floor(baseSize * 0.75);
+    }
+    if (charCount > 8) {
+        return Math.floor(baseSize * 0.85);
+    }
+    return baseSize;
+}
+
+function checkListOverflow(list, maxItems) {
+    if (list && list.length > maxItems) {
+        console.warn(`[Safeguard] List has ${list.length} items, which exceeds the layout limit of ${maxItems}. Items may overflow!`);
+    }
+}
+
+// ---------------------------------------------------------
 // 封面與過場 (Covers & Transitions)
 // ---------------------------------------------------------
 function render_L01_Cover_Standard(slide, content, themeId, colorPalette) {
@@ -26,7 +49,8 @@ function render_L01_Cover_Standard(slide, content, themeId, colorPalette) {
         slide.addShape(slide.pres.ShapeType.roundRect, { x: '10%', y: '20%', w: '80%', h: '60%', fill: { color: colorPalette.background, transparency: 10 }, rectRadius: theme.radius, shadow: theme.shadow });
     }
 
-    slide.addText(content.title, { x: '15%', y: '35%', w: '70%', h: 1.5, fontSize: 54, color: colorPalette.primary, bold: theme.titleWeight === "bold", breakLine: true });
+    const titleSize = calculateFontSize(content.title, 54);
+    slide.addText(content.title, { x: '15%', y: '35%', w: '70%', h: 1.5, fontSize: titleSize, color: colorPalette.primary, bold: theme.titleWeight === "bold", breakLine: true });
     if (content.subtitle) slide.addText(content.subtitle, { x: '15%', y: '50%', w: '70%', h: 1.0, fontSize: 24, color: colorPalette.accent_colors?.[0] || "888888", breakLine: true });
 }
 
@@ -43,7 +67,9 @@ function render_L03_Cover_Wireframe(slide, content, themeId, colorPalette) {
     // 實作 BW01: Title floating above a central line
     slide.background = { color: colorPalette.background };
     slide.addShape(slide.pres.ShapeType.line, { x: '10%', y: '50%', w: '80%', h: 0, line: { color: colorPalette.primary, width: 2 } });
-    slide.addText(content.title, { x: '10%', y: '30%', w: '80%', h: 1.5, fontSize: 50, color: colorPalette.primary, valign: 'bottom' });
+    
+    const titleSize = calculateFontSize(content.title, 50);
+    slide.addText(content.title, { x: '10%', y: '30%', w: '80%', h: 1.5, fontSize: titleSize, color: colorPalette.primary, valign: 'bottom' });
     if(content.subtitle) slide.addText(content.subtitle, { x: '10%', y: '55%', w: '80%', h: 1.0, fontSize: 20, color: "666666", valign: 'top' });
 }
 
@@ -67,6 +93,8 @@ function render_L05_Quote_Split(slide, content, themeId, colorPalette) {
     slide.addText(quote, { x: '5%', y: '20%', w: '40%', h: '60%', fontSize: 50, color: colorPalette.accent_colors?.[0] || colorPalette.primary, bold: true, breakLine: true, align: 'center', valign: 'middle' });
     slide.addShape(slide.pres.ShapeType.line, { x: '50%', y: '20%', w: 0, h: '60%', line: { color: "CCCCCC", width: 1 } });
     slide.addText(paragraph + author, { x: '55%', y: '25%', w: '40%', fontSize: 20, color: colorPalette.primary, breakLine: true });
+    
+    checkListOverflow(content.bullets, 6);
     if(content.bullets) {
         content.bullets.forEach((b, i) => {
             slide.addText("• " + b, { x: '55%', y: 3.5 + (i * 0.6), w: '40%', fontSize: 16, color: "555555" });
