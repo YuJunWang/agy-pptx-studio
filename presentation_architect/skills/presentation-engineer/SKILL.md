@@ -24,6 +24,7 @@ This engine contains pre-defined rendering functions for each `layout_id` (e.g.,
 ```javascript
 const PptxGenJS = require("pptxgenjs");
 const engine = require("C:/Users/wang6/.gemini/config/plugins/presentation_architect/engine/layouts.js");
+const colorPalettes = require("C:/Users/wang6/.gemini/config/plugins/presentation_architect/styles/color_palettes.json");
 const fs = require('fs');
 const yaml = require('js-yaml');
 
@@ -31,15 +32,44 @@ const yaml = require('js-yaml');
 const blueprint = yaml.load(fs.readFileSync('blueprint.yaml', 'utf8'));
 let pres = new PptxGenJS();
 
+const globalSettings = blueprint.global_settings;
+
+// Handle both palette_id (new) and inline palette (legacy)
+let colorPalette;
+if (globalSettings.color_palette_id) {
+    colorPalette = colorPalettes.palettes[globalSettings.color_palette_id];
+    if (!colorPalette) throw new Error(`Unknown palette ID: ${globalSettings.color_palette_id}`);
+} else if (globalSettings.color_palette) {
+    const p = globalSettings.color_palette;
+    colorPalette = {
+        background: p.background?.replace('#', ''),
+        primary: p.primary?.replace('#', ''),
+        accent_colors: p.accent_colors?.map(c => c.replace('#', ''))
+    };
+} else {
+    throw new Error("YAML must contain either color_palette_id or color_palette");
+}
+
 blueprint.slides.forEach(slideData => {
     let slide = pres.addSlide();
+    slide.pres = pres; // Workaround for engine using slide.pres.ShapeType
     
-    // Dispatch to the Engine
-    if (slideData.layout_id === "S01_Cover") {
-        engine.render_S01_Cover(slide, slideData.content, blueprint.global_settings.style_theme, blueprint.global_settings.color_palette);
+    // Dispatch to the Engine dynamically
+    const layoutFn = engine["render_" + slideData.layout_id];
+    if (layoutFn) {
+        layoutFn(slide, slideData.content, globalSettings.style_theme, colorPalette);
+    } else {
+        console.warn("Layout function not found for:", slideData.layout_id);
     }
-    // ... handle other layout IDs
 });
 
-pres.writeFile({ fileName: "Presentation.pptx" });
+pres.writeFile({ fileName: "Presentation.pptx" }).then(() => {
+    console.log("created file: Presentation.pptx");
+});
 ```
+
+## Post-Build Verification (MANDATORY)
+After executing `build_pptx.js`, you MUST:
+1. Check that the console output contains `created file:` and NO lines saying `Layout function *** not found`.
+2. Run a quick validation to confirm the output .pptx slide count matches the number of slides in the YAML.
+3. If ANY warnings were printed, you MUST report them to the Orchestrator and NOT claim success.

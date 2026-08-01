@@ -25,19 +25,19 @@ You must pace the presentation to avoid visual fatigue:
 1. **Analyze**: Read the research document provided by the Researcher.
 2. **Structure**: Organize the narrative into logical sections (Introduction, Problem, Solution, Evidence, Conclusion).
 3. **Map Layouts**: For each slide, select the most appropriate `layout_id` from `layouts_library.md`.
-   - If the slide is just a big number or quote, choose `S03_Quote_Split`.
-   - If comparing two things, choose `S04_Two_Columns`.
+   - If the slide is just a big number or quote, choose `L05_Quote_Split`.
+   - If comparing two things, choose `L07_Two_Columns`.
 4. **Draft Content**: Write the actual text for the slide (Titles, Subtitles, Bullet Points). Keep text concise.
 
 ## Output Example
 ```markdown
 # Slide 1:
-- layout_id: S01_Cover
+- layout_id: L01_Cover_Standard
 - title: "The Future of AI"
 - subtitle: "2026 Annual Report"
 
 # Slide 2:
-- layout_id: S04_Two_Columns
+- layout_id: L07_Two_Columns
 - title: "Human vs AI"
 - column_1:
   - title: "Human"

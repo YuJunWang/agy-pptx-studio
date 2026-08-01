@@ -270,10 +270,22 @@ function render_L15_Circular_Process(slide, content, themeId, colorPalette) {
     // Fallback: render as a simple section divider
     render_L04_Section_Divider(slide, content, themeId, colorPalette);
 }
-function render_L16_Dual_Pipeline(slide, content, themeId, colorPalette) {}
-function render_L17_Matrix_3x3(slide, content, themeId, colorPalette) {}
-function render_L18_Stacked_Ledger(slide, content, themeId, colorPalette) {}
-function render_L19_KPI_Tower(slide, content, themeId, colorPalette) {}
+function render_L16_Dual_Pipeline(slide, content, themeId, colorPalette) {
+    console.warn("[Engine] L16_Dual_Pipeline is not fully implemented. Rendering as section divider fallback.");
+    render_L04_Section_Divider(slide, content, themeId, colorPalette);
+}
+function render_L17_Matrix_3x3(slide, content, themeId, colorPalette) {
+    console.warn("[Engine] L17_Matrix_3x3 is not fully implemented. Rendering as section divider fallback.");
+    render_L04_Section_Divider(slide, content, themeId, colorPalette);
+}
+function render_L18_Stacked_Ledger(slide, content, themeId, colorPalette) {
+    console.warn("[Engine] L18_Stacked_Ledger is not fully implemented. Rendering as section divider fallback.");
+    render_L04_Section_Divider(slide, content, themeId, colorPalette);
+}
+function render_L19_KPI_Tower(slide, content, themeId, colorPalette) {
+    console.warn("[Engine] L19_KPI_Tower is not fully implemented. Rendering as section divider fallback.");
+    render_L04_Section_Divider(slide, content, themeId, colorPalette);
+}
 function render_L20_Image_Lead(slide, content, themeId, colorPalette) {
     // M04: Image on left, text on right
     slide.background = { color: colorPalette.background };
@@ -287,10 +299,23 @@ function render_L20_Image_Lead(slide, content, themeId, colorPalette) {
     }
 }
 
-module.exports = {
+const _EXPORTS = {
     render_L01_Cover_Standard, render_L02_Cover_Blocks, render_L03_Cover_Wireframe, render_L04_Section_Divider,
     render_L05_Quote_Split, render_L06_Color_Split, render_L07_Two_Columns, render_L08_Three_Columns,
     render_L09_Four_Grid, render_L10_Dark_Card, render_L11_Metric_Dashboard, render_L12_Compare,
     render_L13_Horizontal_Timeline, render_L14_Process_4, render_L15_Circular_Process, render_L16_Dual_Pipeline,
     render_L17_Matrix_3x3, render_L18_Stacked_Ledger, render_L19_KPI_Tower, render_L20_Image_Lead
 };
+
+// Self-audit log
+const stubs = Object.keys(_EXPORTS).filter(k => {
+    const fnStr = _EXPORTS[k].toString();
+    return fnStr.includes("not fully implemented") || fnStr.includes("Fallback:");
+});
+if (stubs.length > 0) {
+    console.log(`[Engine] Loaded 20 Layouts. (Note: ${stubs.length} are running in fallback mode: ${stubs.map(k=>k.replace('render_','').split('_')[0]).join(', ')})`);
+} else {
+    console.log(`[Engine] Loaded 20 Layouts. All fully implemented.`);
+}
+
+module.exports = _EXPORTS;

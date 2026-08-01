@@ -17,7 +17,8 @@ Your job is purely to define the **Intent** (Content + Theme + Colors).
 1. **Select Theme**: Read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\design_system.md` and select a `style_theme` (e.g., `Swiss_Minimal`, `Floating_Cards`).
 2. **Select Palette**: Read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\color_palettes.json` and select a color palette ID (e.g., `P01_Swiss_IKB`). You are **STRICTLY FORBIDDEN** from inventing your own Hex colors. You MUST output ONLY the ID of the chosen palette.
 3. **Generate Backgrounds**: Use the `generate_image` tool to create any necessary background images for cover slides or aesthetic sections, and get their file paths.
-4. **Compile YAML**: Convert the Strategist's outline into a strict YAML format.
+4. **Reference Schema**: Before writing YAML, read `C:\Users\wang6\.gemini\config\plugins\presentation_architect\styles\content_schema.md` to find the exact field names required for each `layout_id` you are using. You MUST use these exact field names. Do NOT invent new keys.
+5. **Compile YAML**: Convert the Strategist's outline into a strict YAML format.
 
 ## YAML Output Format (CRITICAL)
 Your YAML must follow this exact structure. DO NOT output any `x, y, w, h` attributes.
@@ -29,20 +30,18 @@ global_settings:
 
 slides:
   - slide_number: 1
-    layout_id: "S01_Cover"
+    layout_id: "L01_Cover_Standard"
     content:
       title: "The Future of AI"
       subtitle: "2026 Annual Report"
       background_image_path: "C:\\...\\image.png"
       
   - slide_number: 2
-    layout_id: "S04_Two_Columns"
+    layout_id: "L07_Two_Columns"
     content:
       title: "Human vs AI"
       column_1:
         title: "Human"
-        bullets: ["Creative", "Emotional"]
       column_2:
         title: "AI"
-        bullets: ["Fast", "Precise"]
 ```
