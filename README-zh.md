@@ -31,17 +31,17 @@
 * **🛠️ 實作工程師 (presentation-engineer)**：
     接收最終的藍圖，使用 `pptxgenjs` (Node.js 函式庫) 渲染並輸出實體的 `.pptx` 簡報檔案。
 
-### 2. 🎨 引擎驅動排版系統 (Engine-Driven Layout System)
-本專案近期已從「Prompt 動態生成風格」重構為 **「引擎驅動架構 (Engine-Driven Architecture)」**，以保證排版的絕對穩定性。
-我們不再讓 AI 去計算 `x, y` 座標或猜測圖層順序（這往往導致文字重疊或跑版），而是提供了一套預先寫好的版型庫：
-* **`layouts_library.md`**：為策略師 (Strategist) 提供 20 種統一的標準排版結構（例如：L01_Cover, L05_Quote_Split, L13_Horizontal_Timeline）。
-* **`layouts.js` (核心引擎)**：包含這 20 種版型嚴格的 `pptxgenjs` 渲染函數，內建自動換行、防遮掩碰撞以及精確的座標映射邏輯。
+### 2. 🎨 風格註冊表架構 (Style Registry Architecture - Scheme D)
+本專案目前採用去中心化的 **「風格註冊表架構」**，以保證排版的絕對穩定性並提供無限的擴充潛力。
+我們不再讓 AI 去計算 `x, y` 座標或猜測圖層順序（這往往導致文字重疊或跑版），而是將每一種視覺主題完整封裝在 `styles/` 目錄下：
+* **風格說明書 (`.md`)**：提供給 AI 策略師與藝術指導的嚴格規範。它定義了該風格專屬支援的 `layout_type` ID (例如：`S01_Cover`, `S02_Split_Text`)，確保 LLM 只會輸出引擎能渲染的合法排版。
+* **渲染引擎 (`.js`)**：精確的 `pptxgenjs` 渲染腳本 (例如：`styles/swiss-simple.js`)，負責處理該主題獨特的座標映射、字體排印與防碰撞邏輯。
 
-### 3. 🏛️ 解耦的設計系統 (Decoupled Design System)
-為了在不破壞結構版型的前提下創造視覺多樣性，**藝術指導 (Art Director)** 現在依賴解耦的數據字典，而非透過 LLM 即興發揮：
-* **`design_system.md`**：定義不同氛圍（如 `Swiss_Minimal`, `Floating_Cards`, `Business_Wireframe`, `Magazine`）的視覺規則，包含圓角大小、邊框粗細與字體權重。
-* **`color_palettes.json`**：提供嚴格的 3-4 色組合，確保視覺和諧。
-* **工作流**：藝術指導只需輸出純粹的數據驅動 YAML（例如：`layout: L03, theme: Swiss, color: Corporate_Navy`）。實作工程師會將其餵給 `layouts.js`，渲染出完美、無重疊的 `.pptx` 檔案。
+### 3. 📝 備忘稿系統與文字純化 (Speaker Notes & Typography Control)
+為了解決 AI 喜歡在畫面上用括號補充說明或進行雙語翻譯 (例如：`Generative UI (生成式介面)`) 的通病，系統現在導入了嚴格的 **雙語與排版制約 (Bilingual Mandate)**：
+* **純粹標題 (Pure Titles)**：投影片標題必須保持極度純粹與強烈打擊感 (強制全中文或全英文)。
+* **備忘稿分流**：所有輔助說明的文字、背景脈絡，或是重要專有名詞的中文翻譯，都會被自動引導並寫入投影片的 **講者備忘稿** (`> Speaker Notes:`) 中。這不僅讓視覺排版保持極簡，更保留了給講者的豐富資訊。
+* **統一調度**：核心腳本 `scripts/build_presentation.js` 會讀取 AI 產出的 YAML 藍圖，動態載入對應的風格引擎，並自動將備忘稿寫入實體的 `.pptx` 中。
 
 ### 4. 🖼️ 繪圖功能深度改造 (Image Generation Enhancements)
 此模組作為簡報視覺素材的生成中心。它深度改造並強化了 Antigravity 內建的 `generate_image` 指令，解決了原生工具的多項限制，確保能產出適合簡報使用的專業級素材。
@@ -62,9 +62,8 @@ agy-pptx-studio/
 ├── presentation_architect/      # 多代理人簡報生成核心外掛
 │   ├── plugin.json
 │   ├── skills/                  # 各司其職的子代理人技能包 (Strategist, Art Director, Engineer)
-│   ├── scripts/                 # Python/Node.js 實作腳本 (extract_pptx 等)
-│   ├── engine/                  # 核心 JS 排版引擎 (layouts.js)
-│   └── styles/                  # 解耦的設計系統與網格藍圖 (design_system.md, layouts_library.md)
+│   ├── scripts/                 # 核心建置腳本 (build_presentation.js)
+│   └── styles/                  # 風格註冊表 (包含 .md 規範與 .js 渲染引擎)
 └── antigravity-image-master/    # 視覺素材與生圖強化外掛
     ├── plugin.json
     └── skills/                  # 生圖公式與比例裁切技能包

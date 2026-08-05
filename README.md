@@ -31,17 +31,17 @@ This core plugin is structured as a **Multi-Agent Department**, acting as the br
 * **🛠️ Engineer (presentation-engineer)**:
     Executes the blueprint using the `pptxgenjs` Node.js library to render the final, physical `.pptx` file.
 
-### 2. 🎨 Engine-Driven Layout System
-This project has recently been refactored from a Prompt-based dynamic style generator into an **Engine-Driven Architecture** to guarantee absolute layout stability.
-Instead of having the AI calculate `x, y` coordinates and guess layer orderings (which often results in overlapping text and broken designs), we provide a pre-coded layout library:
-* **`layouts_library.md`**: Exposes 20 unified standard layout structures (e.g., L01_Cover, L05_Quote_Split, L13_Horizontal_Timeline) to the Narrative Strategist.
-* **`layouts.js` (The Engine)**: Contains the rigid `pptxgenjs` rendering functions for these 20 layouts, complete with auto-wrapping, collision prevention, and exact coordinate mapping.
+### 2. 🎨 Style Registry Architecture (Scheme D)
+This project operates on a decentralized **Style Registry Architecture** to guarantee absolute layout stability and unlimited expandability.
+Instead of having the AI calculate `x, y` coordinates and guess layer orderings (which often results in broken designs), each visual theme is fully encapsulated into a self-contained module in the `styles/` directory:
+* **Style Documentation (`.md`)**: A strict guideline for the AI Strategist and Art Director. It defines the exact `layout_type` IDs available for that specific style (e.g., `S01_Cover`, `S02_Split_Text`), ensuring the LLM only outputs supported layouts.
+* **Style Engine (`.js`)**: A precise `pptxgenjs` rendering script (e.g., `styles/swiss-simple.js`) that handles the exact coordinate mapping, typography, and collision prevention for that specific theme.
 
-### 3. 🏛️ Decoupled Design System
-To create visual variety without breaking structural layouts, the **Art Director** relies on decoupled data dictionaries instead of ad-hoc LLM styling:
-* **`design_system.md`**: Defines visual rules like border radius, line thickness, and font weight for various vibes (e.g., `Swiss_Minimal`, `Floating_Cards`, `Business_Wireframe`, `Magazine`).
-* **`color_palettes.json`**: Provides strict 3-4 color combinations to ensure visual harmony.
-* **Workflow**: The Art Director simply outputs a pure Data-Driven YAML (e.g., `layout: L03, theme: Swiss, color: Corporate_Navy`). The Engineer feeds this into `layouts.js` to render a flawless, non-overlapping `.pptx`.
+### 3. 📝 Speaker Notes & Typography Control
+To prevent AI from cluttering slide layouts with unnecessary explanations or bilingual translations (e.g., `Generative UI (生成式介面)`), the ecosystem features a strict **Bilingual Mandate**:
+* **Pure Titles**: Slide titles must be pure and punchy (either all English or all Chinese).
+* **Speaker Notes System**: All supplementary context, explanations, and Chinese translations for technical terms are automatically routed to the slide's **Speaker Notes** (`> Speaker Notes:`). This keeps the visual layout extremely clean while preserving the AI's deep context for the presenter.
+* **Orchestration**: A central `scripts/build_presentation.js` engine reads the AI's YAML blueprint, dynamically loads the correct Style Engine, injects the speaker notes, and renders the flawless `.pptx`.
 
 ### 4. 🖼️ Image Generation Enhancements
 This module serves as the visual asset creator. It heavily modifies and enhances Antigravity's built-in `generate_image` command, overcoming native limitations to produce production-ready assets.
@@ -62,9 +62,8 @@ agy-pptx-studio/
 ├── presentation_architect/      # Core multi-agent presentation generation plugin
 │   ├── plugin.json
 │   ├── skills/                  # Individual subagent skills (Strategist, Art Director, Engineer)
-│   ├── scripts/                 # Python/Node.js utilities (e.g., extract_pptx)
-│   ├── engine/                  # Core JS layout engine (layouts.js)
-│   └── styles/                  # Decoupled design systems (design_system.md, layouts_library.md)
+│   ├── scripts/                 # Node.js build orchestrator (build_presentation.js)
+│   └── styles/                  # Style Registry containing .md guidelines and .js engines (e.g., swiss.js)
 └── antigravity-image-master/    # Visual asset & image generation plugin
     ├── plugin.json
     └── skills/                  # Prompt formulas and ratio cropping tools
