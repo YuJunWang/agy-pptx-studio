@@ -1,8 +1,3 @@
----
-name: presentation-style-vscode-ide
-description: A highly geeky, developer-centric presentation style that mimics the Visual Studio Code interface. Features syntax highlighting, Mac terminal windows, and iMessage chat bubbles. Best for technical pitches, engineering teams, and software architecture overviews.
----
-
 # Style Name: VS Code IDE (工程師終端風)
 
 ## Overview

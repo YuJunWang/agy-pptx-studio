@@ -1,8 +1,3 @@
----
-name: presentation-style-business-wireframe
-description: Generates high-contrast, professional corporate presentations characterized by wireframe stroke cards, sharp top dividers, and disciplined geometric grids. Best for B2B pitches, technical deep-dives, and corporate training.
----
-
 # Style Name: Business Wireframe (商務線框風)
 
 ## Overview

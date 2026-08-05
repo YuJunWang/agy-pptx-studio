@@ -1,8 +1,3 @@
----
-name: presentation-style-magazine
-description: Use when the user requests a presentation with an editorial, humanistic, "Monocle magazine", or e-ink style. Features serif headers, fluid minimal backgrounds, and strict grid alignments for photos.
----
-
 # Presentation Style: Magazine x E-ink (電子雜誌 × 電子墨水)
 
 ## Overview

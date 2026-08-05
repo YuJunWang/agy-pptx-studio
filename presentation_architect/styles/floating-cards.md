@@ -1,8 +1,3 @@
----
-name: presentation-style-floating-cards
-description: Use when the user requests a presentation with a warm, friendly, modern SaaS, educational, or highly detailed aesthetic with depth, floating elements, and gentle shadows.
----
-
 # Presentation Style: Floating Cards
 
 ## Overview

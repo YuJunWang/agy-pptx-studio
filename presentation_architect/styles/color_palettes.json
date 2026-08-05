@@ -1,39 +1,102 @@
 {
-  "palettes": {
-    "P01_Swiss_IKB": {
-      "name": "瑞士極簡 / 克萊因藍 (Swiss IKB)",
-      "description": "高度對比，適合科技與數據。以白色為底，極黑為字，搭配高飽和度的克萊因藍作為唯一的強調色。",
-      "background": "FFFFFF",
-      "primary": "000000",
-      "accent_colors": ["002FA7"]
-    },
-    "P02_Midnight_Exec": {
-      "name": "深夜行政 (Midnight Exec)",
-      "description": "專業、沉穩，適合商業發布與高階主管報告。以深藍色為底，白色為字，並搭配金色/橘色作為畫龍點睛的強調色。",
-      "background": "1E2761",
-      "primary": "FFFFFF",
-      "accent_colors": ["FFB84D", "CADCFC"]
-    },
-    "P03_Forest_Ink": {
-      "name": "森林墨 (Forest Ink)",
-      "description": "自然、可持續性、文化分享。暖色調米白底，深墨綠色字體，搭配大地色系的強調。",
-      "background": "F9F8F3",
-      "primary": "1B3B36",
-      "accent_colors": ["D2A868", "E6E0D4"]
-    },
-    "P04_Dune_Sand": {
-      "name": "沙丘 (Dune Sand)",
-      "description": "藝術、設計、畫廊。極具美感的低飽和度搭配，沙色為底，深褐色為主字。",
-      "background": "E5D9C5",
-      "primary": "3A3226",
-      "accent_colors": ["A44A3F", "8B9D83"]
-    },
-    "P05_Monocle_Classic": {
-      "name": "雜誌經典 (Monocle Classic)",
-      "description": "經典的紙本雜誌閱讀感。高對比黑白，搭配經典的深紅色強調。",
-      "background": "F4F4F4",
-      "primary": "111111",
-      "accent_colors": ["C8102E", "666666"]
-    }
+  "01_business_blue": {
+    "name": "深夜行政藍 (Business Blue)",
+    "description": "商務、財經、企業嚴謹實例",
+    "colors": [
+      "#1E2761",
+      "#CADCFC",
+      "#FFFFFF"
+    ],
+    "complementary_color": "#FFB84D"
+  },
+  "02_forest_moss": {
+    "name": "森林與苔蘚 (Forest Moss)",
+    "description": "環保、自然、健康主題",
+    "colors": [
+      "#2C5F2D",
+      "#97BC62",
+      "#F5F5F5"
+    ],
+    "complementary_color": "#D9534F"
+  },
+  "03_coral_vitality": {
+    "name": "珊瑚活力 (Coral Vitality)",
+    "description": "活力滿滿、生活、年輕",
+    "colors": [
+      "#F96167",
+      "#F9E795",
+      "#2F3C7E"
+    ],
+    "complementary_color": "#00C9A7"
+  },
+  "04_warm_terracotta": {
+    "name": "暖陶士 (Warm Terracotta)",
+    "description": "文化、旅遊、復古質感",
+    "colors": [
+      "#B85042",
+      "#E7EBD1",
+      "#A7B8AE"
+    ],
+    "complementary_color": "#4B8BBE"
+  },
+  "05_ocean_gradient": {
+    "name": "海洋漸層 (Ocean Gradient)",
+    "description": "科技、知識、科醫題材",
+    "colors": [
+      "#065A82",
+      "#1C7293",
+      "#21295C"
+    ],
+    "complementary_color": "#FF9F1C"
+  },
+  "06_charcoal_minimal": {
+    "name": "炭灰極簡 (Charcoal Minimal)",
+    "description": "極簡、攝影、雜誌風格",
+    "colors": [
+      "#36454F",
+      "#F2F2F2",
+      "#212121"
+    ],
+    "complementary_color": "#E74C3C"
+  },
+  "07_cyan_trust": {
+    "name": "青藍信任 (Cyan Trust)",
+    "description": "醫療、信任感、金融科技",
+    "colors": [
+      "#028090",
+      "#00A896",
+      "#02C39A"
+    ],
+    "complementary_color": "#FF7B54"
+  },
+  "08_berry_cream": {
+    "name": "莓果奶油 (Berry Cream)",
+    "description": "美食、女性向、生活時尚",
+    "colors": [
+      "#6D214E",
+      "#A26769",
+      "#ECE2D0"
+    ],
+    "complementary_color": "#85C1E9"
+  },
+  "09_sage_healing": {
+    "name": "鼠尾草療癒 (Sage Healing)",
+    "description": "療癒、心理、冥想空間",
+    "colors": [
+      "#84B59F",
+      "#69A297",
+      "#50808E"
+    ],
+    "complementary_color": "#E59866"
+  },
+  "10_intense_cherry": {
+    "name": "強烈櫻桃 (Intense Cherry)",
+    "description": "強力奪目、時尚、運動熱情",
+    "colors": [
+      "#990011",
+      "#FCF6F5",
+      "#2F3C7E"
+    ],
+    "complementary_color": "#F1C40F"
   }
 }

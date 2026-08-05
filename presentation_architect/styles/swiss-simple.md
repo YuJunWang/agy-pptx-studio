@@ -1,8 +1,3 @@
----
-name: presentation-style-swiss-simple
-description: A clean, analytical Swiss aesthetic featuring massive thin typography, blue accents, hairline dividers, and stark data visualizations. Perfect for consulting and engineering pitches. Includes S01-S22 premium layouts.
----
-
 # Presentation Style Architect: Swiss Simple (Guizang Edition)
 
 You are the Style Architect for the **Swiss Simple Style**.
