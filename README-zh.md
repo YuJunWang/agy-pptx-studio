@@ -20,7 +20,7 @@
 ### 1. 🤖 多代理人協作流程 (Presentation Architect Workflow)
 此核心外掛被設計為一個 **「多代理人部門 (Multi-Agent Department)」**，作為生成高質感簡報的大腦。這套工作流會透過 **總指揮 (presentation-orchestrator)** 接收使用者的初始指令，並嚴格依照順序分配給專責的子代理人執行：
 
-> **workflow**：`[指令輸入]` ➔ 🔍 `研究員` ➔ 📝 `策略師` ➔ 🎨 `藝術指導` ➔ 🛠️ `實作工程師` ➔ `[輸出 PPTX]`
+> **workflow**：`[指令輸入]` ➔ 🔍 `研究員` ➔ 📝 `策略師` ➔ 🎨 `藝術指導` ➔ 🛠️ `實作工程師` ➔ 👁️ `品質守門員` ➔ `[輸出 PPTX]`
 
 * **🔍 研究員 (presentation-researcher)**：
     流程的第一步會先蒐集原始資料、進行深度分析並萃取出必要的洞察資訊，輸出為純文字的研究檔案。
@@ -30,6 +30,8 @@
     根據大綱套用嚴格的設計系統與網格限制，選擇合適的字體與配色，並調用生圖工具來產生需要的視覺素材，最終完成高度規格化的 YAML 藍圖 (`_blueprint.yaml`)。
 * **🛠️ 實作工程師 (presentation-engineer)**：
     接收最終的藍圖，使用 `pptxgenjs` (Node.js 函式庫) 渲染並輸出實體的 `.pptx` 簡報檔案。
+* **👁️ 品質守門員 (presentation-qa-tester)**：
+    作為流程的最後一道防線，導入 **Visual TDD (視覺反饋迴圈)** 機制。將生成的簡報逐頁截圖，利用視覺模型進行排版美學稽核。若發現溢出或跑版，會建立結構化的內部工單 (Internal Ticket) 並動態路由退回給負責的子代理人進行修復，形成完整的修正閉環。
 
 ### 2. 🎨 風格註冊表架構 (Style Registry Architecture - Scheme D)
 本專案目前採用去中心化的 **「風格註冊表架構」**，以保證排版的絕對穩定性並提供無限的擴充潛力。
@@ -47,8 +49,8 @@
 此模組作為簡報視覺素材的生成中心。它深度改造並強化了 Antigravity 內建的 `generate_image` 指令，解決了原生工具的多項限制，確保能產出適合簡報使用的專業級素材。
 
 * **無文字/無主角的簡報底圖**：原生的生圖工具很容易產出包含亂碼或元素過度擁擠的圖像。我們設計的 `background-generation-formula` 會強制加上極嚴格的限制（例如：`NO TEXT, NO WORD`），專門用來生成極致乾淨、閱讀性極高的簡報底圖與 UI 背景。
-* **提示詞強化器 (Prompt Enhancer)**：包含用於生成高品質電影感插畫的「7 層結構公式 (`image-generation-formula`)」，以及專為時間軸、漏斗圖、循環圖等抽象概念設計的「5 層圖表結構公式 (`diagram-generation-formula`)」。
-* **突破比例限制的裁切腳本**：Antigravity 內建的生圖指令目前只能輸出 1:1 的正方形圖片。為了解決這個問題，調度中心使用了一種巧妙的「留白填充 (Padding Prompt)」技巧來生成被包裹在正方形中的寬螢幕圖像，接著自動呼叫一段 Python 腳本 (`crop_image.py`)，將圖片物理裁切成精確的 16:9、9:16 或任何簡報所需的自訂比例。
+* **提示詞強化器 (Prompt Enhancer)**：包含用於生成高品質電影感插畫的「7 層結構公式 (`image-generation-formula`)」，以及專為時間軸、漏斗圖、循環圖等抽象概念設計的「5 層圖表結構公式 (`diagram-generation-formula`)」，完美覆蓋 20 種常見的簡報版型。
+* **原生比例生圖與強韌降級機制 (Aspect Ratio & Fallback)**：全面支援原生 `AspectRatio` 參數 (如 16:9, 9:16) 以達到最佳構圖品質。同時保留巧妙的「留白填充 (Padding Prompt)」與 Python 物理裁切腳本 (`crop_image.py`) 作為 Fallback 機制，當原生生圖遇到限制時可無縫降級，確保工作流不中斷。
 
 ## 🛠️ 技術堆疊 (Tech Stack)
 * **Agent Framework**: Antigravity, LangChain (Skills & Agents)

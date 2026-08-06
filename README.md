@@ -20,7 +20,7 @@ Welcome to **agy-pptx-studio**, a dedicated ecosystem and monorepo designed spec
 ### 1. 🤖 Multi-Agent Workflow (Presentation Architect)
 This core plugin is structured as a **Multi-Agent Department**, acting as the brain for generating highly aesthetic presentations. The workflow enforces a strict sequential pipeline, coordinated by the **Orchestrator**, which receives the initial user command and delegates tasks:
 
-> **workflow**: `[User Input]` ➔ 🔍 `Researcher` ➔ 📝 `Strategist` ➔ 🎨 `Art Director` ➔ 🛠️ `Engineer` ➔ `[Output PPTX]`
+> **workflow**: `[User Input]` ➔ 🔍 `Researcher` ➔ 📝 `Strategist` ➔ 🎨 `Art Director` ➔ 🛠️ `Engineer` ➔ 👁️ `QA Tester` ➔ `[Output PPTX]`
 
 * **🔍 Researcher (presentation-researcher)**:
     Begins by gathering raw data, performing deep analysis, and extracting necessary insights, saving them to a physical research file.
@@ -30,6 +30,8 @@ This core plugin is structured as a **Multi-Agent Department**, acting as the br
     Applies design system constraints, selects typography and color palettes, invokes the image generator for necessary visuals, and finalizes the strict `_blueprint.yaml`.
 * **🛠️ Engineer (presentation-engineer)**:
     Executes the blueprint using the `pptxgenjs` Node.js library to render the final, physical `.pptx` file.
+* **👁️ QA Tester (presentation-qa-tester)**:
+    Acts as the final gatekeeper, introducing a **Visual TDD (Test-Driven Development)** loop. It takes screenshots of the generated slides and uses a visual model to audit layout aesthetics. If text overflow or alignment issues are detected, it creates an Internal Ticket and dynamically routes it back to the responsible subagent for a closed-loop correction.
 
 ### 2. 🎨 Style Registry Architecture (Scheme D)
 This project operates on a decentralized **Style Registry Architecture** to guarantee absolute layout stability and unlimited expandability.
@@ -47,8 +49,8 @@ To prevent AI from cluttering slide layouts with unnecessary explanations or bil
 This module serves as the visual asset creator. It heavily modifies and enhances Antigravity's built-in `generate_image` command, overcoming native limitations to produce production-ready assets.
 
 * **Zero-Text / Zero-Subject Backgrounds**: The native image generation often creates messy images. Our `background-generation-formula` enforces strict rules (`NO TEXT, NO WORD`) to generate clean, highly-readable backgrounds and UI overlays.
-* **Prompt Enhancer**: Uses a 7-layer structural formula for general cinematic images, and a 5-layer formula (`diagram-generation-formula`) tailored for conceptual visualizations like timelines, funnels, and process cycles.
-* **Custom Aspect Ratio Solutions**: The native tool is locked to generating 1:1 square images. To solve this, the orchestrator uses a clever "padding prompt" technique combined with an automated Python script (`crop_image.py`) to physically crop the output into precise 16:9, 9:16, or custom aspect ratios.
+* **Prompt Enhancer**: Uses a 7-layer structural formula for general cinematic images, and a 5-layer formula (`diagram-generation-formula`) tailored for conceptual visualizations like timelines, funnels, and process cycles, covering 100% of 20 common presentation layouts.
+* **Native Aspect Ratio & Robust Fallback**: Fully supports the native `AspectRatio` API parameter (e.g., 16:9, 9:16) for optimal composition quality. Simultaneously retains the clever "padding prompt" technique combined with an automated Python script (`crop_image.py`) as a fallback mechanism, ensuring the workflow never breaks if the native generator encounters limitations.
 
 ## 🛠️ Tech Stack
 * **Agent Framework**: Antigravity, LangChain (Skills & Agents)
