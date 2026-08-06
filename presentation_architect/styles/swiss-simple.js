@@ -3,7 +3,6 @@ const pptxgen = require('pptxgenjs');
 module.exports = {
     render: async function(blueprint, outputPath = 'presentation_output.pptx') {
         
-        
         let pres = new pptxgen();
         pres.layout = 'LAYOUT_WIDE'; // 13.33 x 7.5
         
@@ -46,18 +45,30 @@ module.exports = {
                 }
             } 
             else if (slideData.layout_type === "S02") { 
-                slide.addText(slideData.title, { x: 0.5, y: 1.0, w: 6.0, h: 4.0, fontSize: 60, fontFace: fontExtralight, color: "000000", lineSpacing: 60 });
+                // Fix: Always add title
+                slide.addText(slideData.title, { x: 0.5, y: 0.3, w: 12, h: 0.8, fontSize: 36, fontFace: fontExtralight, color: "000000" });
                 if(slideData.subtitle) {
-                    slide.addText(slideData.subtitle, { x: 0.5, y: 5.0, w: 6.0, h: 1.0, fontSize: 60, fontFace: fontExtralight, color: accentColor });
+                    slide.addText(slideData.subtitle, { x: 0.5, y: 1.0, w: 12.0, h: 0.5, fontSize: 18, fontFace: fontRegular, color: accentColor });
                 }
-                slide.addText(slideData.text || "", { x: 7.0, y: 2.0, w: 5.5, h: 1.5, fontSize: 14, fontFace: fontRegular, color: "000000" });
-                slide.addShape(pres.ShapeType.rect, { x: 7.0, y: 4.0, w: 5.5, h: 0.02, fill: { color: "CCCCCC" } });
+
+                if (slideData.left_image) {
+                    slide.addImage({ path: slideData.left_image, x: 0.5, y: 1.7, w: 6.0, h: 5.0, sizing: { type: "cover", w: 6.0, h: 5.0 } });
+                }
                 
-                if(slideData.cards) {
-                    slideData.cards.forEach((card, i) => {
-                        let cx = 7.0 + (i * 2.8);
-                        slide.addText(card.title || "", { x: cx, y: 4.5, w: 2.5, h: 0.5, fontSize: 14, fontFace: fontBold, color: "000000" });
-                        slide.addText(card.text || "", { x: cx, y: 5.0, w: 2.5, h: 1.0, fontSize: 12, fontFace: fontRegular, color: "555555" });
+                slide.addText(slideData.text || slideData.paragraph || "", { x: 7.0, y: 1.7, w: 5.5, h: 1.0, fontSize: 14, fontFace: fontRegular, color: "000000" });
+                slide.addShape(pres.ShapeType.rect, { x: 7.0, y: 2.8, w: 5.5, h: 0.02, fill: { color: "CCCCCC" } });
+                
+                let items = slideData.cards || (slideData.bullets ? slideData.bullets.map(b => ({ title: "", text: b })) : null);
+                if(items) {
+                    // Fix: Stack items vertically instead of horizontally to avoid overflow
+                    items.forEach((card, i) => {
+                        let cy = 3.2 + (i * 1.0);
+                        if (card.title) {
+                            slide.addText(card.title || "", { x: 7.0, y: cy, w: 5.5, h: 0.3, fontSize: 14, fontFace: fontBold, color: "000000" });
+                            slide.addText(card.text || "", { x: 7.0, y: cy + 0.3, w: 5.5, h: 0.6, fontSize: 12, fontFace: fontRegular, color: "555555" });
+                        } else {
+                            slide.addText(card.text || "", { x: 7.0, y: cy, w: 5.5, h: 0.8, fontSize: 12, fontFace: fontRegular, color: "555555" });
+                        }
                     });
                 }
             }
@@ -76,12 +87,16 @@ module.exports = {
                 }
             }
             else if (slideData.layout_type === "S05") { 
-                let colW = 3.5; let startX = 1.0;
+                // Fix: Add missing title
+                slide.addText(slideData.title, { x: 0.5, y: 0.5, w: 12, h: 0.8, fontSize: 40, fontFace: fontExtralight, color: "000000" });
+                
+                let colW = 3.5; let startX = 0.8;
                 if(slideData.cards) {
                     slideData.cards.forEach((card, i) => {
                         let cx = startX + (i * 4.0);
-                        slide.addText(card.title || "", { x: cx, y: 1.5, w: colW, h: 0.5, fontSize: 20, fontFace: fontBold, color: "000000" });
-                        slide.addText(card.text || "", { x: cx, y: 2.2, w: colW, h: 2.0, fontSize: 12, fontFace: fontRegular, color: "555555" });
+                        // Fix: move text down to visually connect better with numbers
+                        slide.addText(card.title || "", { x: cx, y: 3.0, w: colW, h: 0.5, fontSize: 20, fontFace: fontBold, color: "000000" });
+                        slide.addText(card.text || "", { x: cx, y: 3.6, w: colW, h: 1.5, fontSize: 12, fontFace: fontRegular, color: "555555" });
                         
                         let numColor = i === 2 ? accentColor : "000000";
                         slide.addText(`0${i+1}`, { x: cx, y: 5.5, w: colW, h: 1.5, fontSize: 80, fontFace: fontExtralight, color: numColor });
@@ -90,7 +105,8 @@ module.exports = {
                 }
             }
             else if (slideData.layout_type === "S06") {
-                slide.addText(slideData.title, { x: 0.6, y: 0.5, w: 12.0, h: 1.0, fontSize: 48, fontFace: fontExtralight, color: "000000" });
+                // Fix: Title was too close to bars
+                slide.addText(slideData.title, { x: 0.6, y: 0.4, w: 12.0, h: 1.0, fontSize: 40, fontFace: fontExtralight, color: "000000" });
                 let numCards = Math.min(slideData.cards ? slideData.cards.length : 0, 4);
                 if (numCards > 0) {
                     let colW = 12.0 / numCards;
@@ -100,41 +116,45 @@ module.exports = {
                         let cx = 0.6 + (i * colW);
                         let val = parseFloat(card.metric_value) || (maxVal * 0.5);
                         let h = (val / maxVal) * maxH;
-                        let cy = 6.5 - h;
+                        // Fix: base of bar is lower
+                        let cy = 6.7 - h; 
                         slide.addShape(pres.ShapeType.rect, { x: cx + 0.2, y: cy, w: colW - 0.4, h: h, fill: { color: i===0 ? accentColor : "DDDDDD" } });
-                        slide.addText(card.metric_value || "", { x: cx, y: cy - 0.8, w: colW, h: 0.8, fontSize: 36, fontFace: fontExtralight, color: "000000", align: "center" });
-                        slide.addText(card.title || "", { x: cx, y: 6.6, w: colW, h: 0.6, fontSize: 16, fontFace: fontBold, color: "000000", align: "center" });
+                        // Fix: smaller font size to prevent overlapping
+                        slide.addText(card.metric_value || "", { x: cx, y: cy - 0.7, w: colW, h: 0.7, fontSize: 28, fontFace: fontExtralight, color: "000000", align: "center" });
+                        slide.addText(card.title || "", { x: cx, y: 6.8, w: colW, h: 0.5, fontSize: 14, fontFace: fontBold, color: "000000", align: "center" });
                     });
                 }
             }
             else if (slideData.layout_type === "S11") {
                 slide.addText(slideData.title, { x: 0.6, y: 0.5, w: 12.0, h: 1.0, fontSize: 40, fontFace: fontExtralight, color: "000000" });
-                slide.addShape(pres.ShapeType.rect, { x: 0.6, y: 3.75, w: 12.13, h: 0.02, fill: { color: "CCCCCC" } });
+                // Fix: Margin on both sides so text doesn't clip
+                slide.addShape(pres.ShapeType.rect, { x: 1.5, y: 3.75, w: 10.33, h: 0.02, fill: { color: "CCCCCC" } });
                 let numCards = slideData.cards ? slideData.cards.length : 0;
                 if(numCards > 0) {
-                    let step = 12.13 / Math.max(numCards - 1, 1);
+                    let step = 10.33 / Math.max(numCards - 1, 1);
                     slideData.cards.forEach((card, i) => {
-                        let cx = 0.6 + (i * step);
-                        slide.addShape(pres.ShapeType.oval, { x: cx - 0.1, y: 3.65, w: 0.2, h: 0.2, fill: { color: accentColor } });
-                        let ty = i % 2 === 0 ? 2.0 : 4.2;
+                        let cx = 1.5 + (i * step);
+                        slide.addShape(pres.ShapeType.ellipse, { x: cx - 0.1, y: 3.65, w: 0.2, h: 0.2, fill: { color: accentColor } });
+                        let ty = i % 2 === 0 ? 2.3 : 4.2;
                         slide.addText(card.title || "", { x: cx - 1.5, y: ty, w: 3.0, h: 0.5, fontSize: 20, fontFace: fontBold, color: "000000", align: "center" });
                         slide.addText(card.text || "", { x: cx - 1.5, y: ty + 0.5, w: 3.0, h: 1.0, fontSize: 14, fontFace: fontRegular, color: "555555", align: "center" });
                     });
                 }
             }
             else if (slideData.layout_type === "S12") {
-                slide.addText(slideData.title, { x: 0.6, y: 0.5, w: 12.0, h: 1.0, fontSize: 40, fontFace: fontExtralight, color: "000000" });
+                slide.addText(slideData.title, { x: 0.6, y: 0.5, w: 12.0, h: 0.8, fontSize: 36, fontFace: fontExtralight, color: "000000" });
                 if(slideData.cards) {
                     slideData.cards.forEach((card, i) => {
-                        let cy = 2.0 + (i * 1.2);
+                        let cy = 2.0 + (i * 1.3);
                         slide.addText(`0${i+1}`, { x: 0.6, y: cy, w: 0.8, h: 0.8, fontSize: 32, fontFace: fontExtralight, color: accentColor });
                         slide.addText(card.title || "", { x: 1.5, y: cy + 0.1, w: 4.0, h: 0.4, fontSize: 16, fontFace: fontBold, color: "000000" });
                         slide.addText(card.text || "", { x: 1.5, y: cy + 0.5, w: 4.0, h: 0.4, fontSize: 12, fontFace: fontRegular, color: "555555" });
-                        slide.addShape(pres.ShapeType.rect, { x: 0.6, y: cy + 1.0, w: 4.9, h: 0.02, fill: { color: "CCCCCC" } });
+                        slide.addShape(pres.ShapeType.rect, { x: 0.6, y: cy + 1.1, w: 4.9, h: 0.02, fill: { color: "CCCCCC" } });
                     });
                 }
-                slide.addShape(pres.ShapeType.donut, { x: 7.0, y: 2.0, w: 5.0, h: 5.0, fill: { color: "F5F5F5" } });
-                slide.addText("Improves", { x: 7.0, y: 2.0, w: 5.0, h: 5.0, fontSize: 24, fontFace: fontBold, color: accentColor, align: "center", valign: "middle" });
+                slide.addShape(pres.ShapeType.donut, { x: 7.0, y: 1.8, w: 5.0, h: 5.0, fill: { color: "F5F5F5" } });
+                // Fix: Adjusted y and h so "Improves" sits dead center visually
+                slide.addText("Improves", { x: 7.0, y: 1.8, w: 5.0, h: 5.0, fontSize: 24, fontFace: fontBold, color: accentColor, align: "center", valign: "middle" });
             }
             else if (slideData.layout_type === "S15") {
                 slide.addText(slideData.title, { x: 0.6, y: 0.5, w: 12.0, h: 1.0, fontSize: 40, fontFace: fontExtralight, color: "000000" });

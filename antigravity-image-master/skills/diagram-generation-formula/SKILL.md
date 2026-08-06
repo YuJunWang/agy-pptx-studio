@@ -26,20 +26,24 @@ description: Use this skill to generate prompts for conceptual Information Archi
 1. **`bridge` (過渡/解決方案)** -> *視覺隱喻*：A glowing futuristic bridge connecting two separate neon cliffs.
 2. **`circular-flow` (循環/流程)** -> *視覺隱喻*：A 3D isometric circular wheel with glowing interconnected arrows.
 3. **`comparison-table` (比較)** -> *視覺隱喻*：Two contrasting podiums or balanced scales with distinct colors.
-4. **`equation` (公式轉換)** -> *視覺隱喻*：A minimalist input-process-output assembly line.
-5. **`fishbone` (因果分析)** -> *視覺隱喻*：A sleek structural skeleton or branching technology tree.
-6. **`funnel` (漏斗/轉換)** -> *視覺隱喻*：A 3D glassmorphism funnel with floating glowing spheres dropping through levels.
-7. **`iceberg` (表面與深層)** -> *視覺隱喻*：A beautiful minimalist iceberg floating in dark water, showing a massive glowing structure underwater.
-8. **`journey-path` (顧客旅程/路徑)** -> *視覺隱喻*：A winding isometric glowing pathway with distinct milestone markers.
-9. **`layers-stack` (堆疊/技術棧)** -> *視覺隱喻*：A 3D floating stack of translucent glass and metal layered platforms.
-10. **`mind-map` (心智圖/發散)** -> *視覺隱喻*：A glowing neural network or glowing nodes branching out from a central core.
-11. **`nested-circles` (層級/核心邊緣)** -> *視覺隱喻*：Multiple concentric glowing rings surrounding a bright glowing core.
-12. **`pyramid` (金字塔/層級)** -> *視覺隱喻*：A 3D isometric step-pyramid made of frosted glass layers.
-13. **`scale-balance` (權衡/比較)** -> *視覺隱喻*：A minimalist golden scale weighing two glowing abstract concepts.
-14. **`timeline-horizontal` (時間軸)** -> *視覺隱喻*：A straight horizontal glowing light-beam track with distinct floating nodes.
-15. **`venn` (交集)** -> *視覺隱喻*：Overlapping translucent colored glass circles creating glowing intersections.
+4. **`do-dont` (做與不做/對比)** -> *視覺隱喻*：Two contrasting side-by-side vertical panels, left panel in soft glowing emerald green with a clean checkmark, right panel in muted dark gray with a glowing amber-red cross mark.
+5. **`equation` (公式轉換)** -> *視覺隱喻*：A minimalist input-process-output assembly line.
+6. **`feature-list` (功能列表/平行展示)** -> *視覺隱喻*：A horizontal row of multiple floating translucent glass badges, each containing a unique minimalist glowing abstract vector icon.
+7. **`fishbone` (因果分析)** -> *視覺隱喻*：A sleek structural skeleton or branching technology tree.
+8. **`funnel` (漏斗/轉換)** -> *視覺隱喻*：A 3D glassmorphism funnel with floating glowing spheres dropping through levels.
+9. **`grid-cards` (網格卡片/Bento Box)** -> *視覺隱喻*：A 3D glassmorphism bento box grid layout, with translucent panels of varying sizes containing simplified glowing charts and UI modules.
+10. **`iceberg` (表面與深層)** -> *視覺隱喻*：A beautiful minimalist iceberg floating in dark water, showing a massive glowing structure underwater.
+11. **`journey-path` (顧客旅程/路徑)** -> *視覺隱喻*：A winding isometric glowing pathway with distinct milestone markers.
+12. **`layers-stack` (堆疊/技術棧)** -> *視覺隱喻*：A 3D floating stack of translucent glass and metal layered platforms.
+13. **`mind-map` (心智圖/發散)** -> *視覺隱喻*：A glowing neural network or glowing nodes branching out from a central core.
+14. **`nested-circles` (層級/核心邊緣)** -> *視覺隱喻*：Multiple concentric glowing rings surrounding a bright glowing core.
+15. **`priority-quadrants` (優先級象限/2x2)** -> *視覺隱喻*：A 3D coordinate plane divided into four distinct illuminated glass quadrants with gradient accents and floating glowing spheres.
+16. **`pyramid` (金字塔/層級)** -> *視覺隱喻*：A 3D isometric step-pyramid made of frosted glass layers.
+17. **`scale-balance` (權衡/比較)** -> *視覺隱喻*：A minimalist golden scale weighing two glowing abstract concepts.
+18. **`timeline-horizontal` (時間軸)** -> *視覺隱喻*：A straight horizontal glowing light-beam track with distinct floating nodes.
+19. **`tree-hierarchy` (樹狀階層/組織關係)** -> *視覺隱喻*：A 3D vertical branching network structure, with a glowing master node at the top splitting into clean layered sub-nodes of frosted glass.
+20. **`venn` (交集)** -> *視覺隱喻*：Overlapping translucent colored glass circles creating glowing intersections.
 
-*(其餘佈局請依循相同的「3D、發光、玻璃材質、極簡」的美學風格自行推演)*
 
 ## Prompt 轉換範例
 

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "js-yaml": "^5.2.3",
+    "pptxgenjs": "^4.0.1"
+  }
+}

@@ -6,7 +6,7 @@ description: Use when generating images, calling the generate_image tool, or whe
 # Image Generation Formula
 
 ## Overview
-當需要呼叫 `generate_image` 工具或生成影像時，嚴禁使用隨意的單句描述。必須強制套用大師級生圖公式 (8層結構)，以確保底層 API 被正確觸發並產生高品質視覺資產。
+當需要呼叫 `generate_image` 工具或生成影像時，嚴禁使用隨意的單句描述。必須強制套用大師級生圖公式 (7層結構)，以確保底層 API 被正確觸發並產生高品質視覺資產。
 
 ## When to Use
 - 使用者明確要求「生成圖片」、「畫一張圖」時。

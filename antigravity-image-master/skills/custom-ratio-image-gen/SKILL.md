@@ -1,9 +1,9 @@
 ---
 name: custom-ratio-image-gen
-description: Generate images with custom aspect ratios (e.g., 16:9, 9:16, 21:9) using a prompt trick and an automated Python cropping script. Use this whenever the user requests non-1:1 aspect ratio images.
+description: [DEPRECATED / FALLBACK] This skill is now deprecated because generate_image natively supports AspectRatio. It remains only as a fallback cropping method.
 ---
 
-# Custom Aspect Ratio Image Generation Skill
+# [DEPRECATED / FALLBACK] Custom Aspect Ratio Image Generation Skill
 
 ## Background
 The `generate_image` tool by default only generates 1:1 square images. When users request specific aspect ratios like 16:9 (widescreen), 9:16 (vertical), or 4:3, we can use a special prompt trick to tell the AI to draw the main subject in the center with the desired ratio, padded with solid colors, and then crop it automatically.

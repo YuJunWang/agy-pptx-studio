@@ -1,0 +1,22 @@
+style_name: "swiss-simple"
+internal_design_system:
+  color_palette:
+    colors:
+      primary: "1A73E8"
+      background: "FFFFFF"
+      accent: "FF0000"
+  typography:
+    english: "Arial"
+    chinese: "Microsoft JhengHei"
+slide_layout_blueprint:
+  - slide_number: 1
+    layout_type: "S01"
+    title: "Scheme D Architecture"
+    subtitle: "Style Registry Implementation Test"
+  - slide_number: 2
+    layout_type: "S02"
+    title: "Why Scheme D?"
+    bullets:
+      - "Keeps the JS flexibility"
+      - "Consolidates SKILL folders"
+      - "Maintains strict layout rules"

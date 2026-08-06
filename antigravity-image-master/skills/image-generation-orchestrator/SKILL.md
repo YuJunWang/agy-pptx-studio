@@ -29,14 +29,21 @@ description: The primary entry point for ALL image generation requests. It acts 
 *最終 Prompt: `<Content Prompt>`*
 
 **情境 B: 比例為非 1:1 (例如 16:9, 9:16)**
-必須使用「防呆畫布提示詞 (Prompt Trick)」包裹，確保長邊緊貼邊緣無留白：
-1. 若 W > H (如 16:9)：`A single [W:H] cinematic illustration placed in the CENTER of a square canvas, extending fully from the LEFT edge to the RIGHT edge with zero margin. The top and bottom background areas are solid #FADADD. The central [W:H] illustration depicts: <Content Prompt>`
-2. 若 H > W (如 9:16)：`A single [W:H] cinematic illustration placed in the CENTER of a square canvas, extending fully from the TOP edge to the BOTTOM edge with zero margin. The left and right background areas are solid #FADADD. The central [W:H] illustration depicts: <Content Prompt>`
-*(提示：`#FADADD` 可替換為不會干擾主體的純色)*
+1. **原生模式 (推薦)**：
+   直接使用內容公式產出的 `<Content Prompt>`，並在呼叫 `generate_image` 時指定 `AspectRatio` 參數為目標比例。
+2. **Fallback 降級模式** (僅在 native AspectRatio 故障或不支援該比例時使用)：
+   必須使用「防呆畫布提示詞 (Prompt Trick)」包裹，確保長邊緊貼邊緣無留白（注意：若為 `background-generation-formula` 則**不套用**此包裹）：
+   - 若 W > H (如 16:9)：`A single [W:H] cinematic illustration placed in the CENTER of a square canvas, extending fully from the LEFT edge to the RIGHT edge with zero margin. The top and bottom background areas are solid #FADADD. The central [W:H] illustration depicts: <Content Prompt>`
+   - 若 H > W (如 9:16)：`A single [W:H] cinematic illustration placed in the CENTER of a square canvas, extending fully from the TOP edge to the BOTTOM edge with zero margin. The left and right background areas are solid #FADADD. The central [W:H] illustration depicts: <Content Prompt>`
 
-### Step 4: 呼叫生成與裁切 (Execution)
-1. 使用組合好的最終 Prompt 呼叫 `generate_image` 工具。
-2. **(重要) 如果是情境 B (非 1:1)**，取得圖片路徑後，你必須開啟 Terminal 執行以下 Python 腳本進行物理裁切：
-   `python C:\Users\wang6\.gemini\config\plugins\antigravity-image-master\skills\custom-ratio-image-gen\scripts\crop_image.py <input_path> <output_path> --ratio <W:H>`
-   *(請將 `<output_path>` 存在您的 `scratch` 資料夾下，並以 `_cropped.png` 結尾)*
-3. 最後，將最終裁切好的圖片 (或 1:1 原圖) 呈現給使用者。
+## Step 4: 呼叫生成與驗證 (Execution)
+
+1. **原生執行**：
+   呼叫 `generate_image` 工具，傳入 `Prompt` 與對應的 `AspectRatio`。
+2. **驗證與 Fallback 裁切**：
+   取得生成的圖片路徑後，驗證其是否符合目標比例：
+   - **符合目標比例**：直接將圖片呈現給使用者。
+   - **不符合 (如 API 故障退回 1:1 或無效)**：啟動降級裁切機制。執行以下 Python 腳本將 1:1 原圖物理裁切：
+     `python C:\Users\wang6\.gemini\config\plugins\antigravity-image-master\skills\custom-ratio-image-gen\scripts\crop_image.py <input_path> <output_path> --ratio <W:H>`
+     *(請將 `<output_path>` 存在您的 `scratch` 資料夾下，並以 `_cropped.png` 結尾)*
+3. 最後，將最終完成的圖片呈現給使用者。

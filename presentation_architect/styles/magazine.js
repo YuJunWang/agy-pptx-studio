@@ -43,7 +43,11 @@ module.exports = {
             else if (slideData.layout_type === "M04") {
                 // M04: Lead Image + Side Text
                 // 16:10 image on the left
-                slide.addShape(pres.ShapeType.rect, { x: 0.8, y: 1.0, w: 5.5, h: 5.5, fill: { color: "DDDDDD" } });
+                if (slideData.left_image) {
+                    slide.addImage({ path: slideData.left_image, x: 0.8, y: 1.0, w: 5.5, h: 5.5, sizing: { type: "cover", w: 5.5, h: 5.5 } });
+                } else {
+                    slide.addShape(pres.ShapeType.rect, { x: 0.8, y: 1.0, w: 5.5, h: 5.5, fill: { color: "DDDDDD" } });
+                }
                 
                 slide.addText(slideData.title, {
                     x: 6.8, y: 1.0, w: 5.5, h: 1.5,
@@ -71,7 +75,11 @@ module.exports = {
                 for(let i=0; i<numImages; i++) {
                     let cx = startX + i * (w + gap);
                     // Strict uniform height images
-                    slide.addShape(pres.ShapeType.rect, { x: cx, y: 2.0, w: w, h: 4.5, fill: { color: "DDDDDD" } });
+                    if (slideData.images && slideData.images[i]) {
+                        slide.addImage({ path: slideData.images[i], x: cx, y: 2.0, w: w, h: 4.5, sizing: { type: "cover", w: w, h: 4.5 } });
+                    } else {
+                        slide.addShape(pres.ShapeType.rect, { x: cx, y: 2.0, w: w, h: 4.5, fill: { color: "DDDDDD" } });
+                    }
                     if(slideData.cards && slideData.cards[i]) {
                         slide.addText(slideData.cards[i].title, {
                             x: cx, y: 6.7, w: w, h: 0.5,

@@ -13,8 +13,8 @@ description: Use when generating background images for presentations, web UI, or
 你的 Prompt 必須嚴格包含以下結構 (提供給 Orchestrator 或生成工具)：
 `[無主角宣告] + [抽象主體/形狀] + [色彩搭配] + [材質/紋理] + [光影/氛圍] + [簡報背景適用後綴]`
 
-- **[簡報背景適用後綴]**: `, minimalist presentation background, high resolution, 8k, NO TEXT, NO WORD, NO WATERMARK, clean space for text.`
-- **[無主角滿版宣告 (取代比例咒語)]**: 因為背景生成引擎主要用於產生「無主角」的底圖，因此我們**不需要使用複雜的黑邊置中裁切咒語 (custom-ratio-image-gen)**。請直接生成原生滿版的 1:1 圖像，無論後續需要 16:9 還是 9:16 的比例，我們都可以直接裁切 1:1 的原圖來獲得最完美的滿版效果。請確保內容具備高度的連續性。
+- **[簡報背景適用後綴]**: `, minimalist subjectless presentation background, soft edges, smooth gradients, no sharp lines, high resolution, 8k, NO TEXT, NO WORD, NO WATERMARK, clean space for text.`
+- **[無主角與比例處理]**: 確保提示詞中包含 `subjectless, abstract` 等無明確主角的宣示，將視覺焦點均勻分散在背景紋理與色彩流動上。呼叫 `generate_image` 時直接指定目標 `AspectRatio`（如 `16:9` 或 `4:3`），**跳過**任何置中畫布包裹（Prompt Trick），直接生成滿版圖像，以獲取最完美、連續性佳的原生背景底圖。
 
 ## Reference Styles & Examples
 

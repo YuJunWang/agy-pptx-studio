@@ -44,3 +44,13 @@ When a presentation is requested, follow this sequence (or resume from a saved f
    - **If the user explicitly requested a "Web Deck" or "HTML Presentation"**:
      - Skill: `presentation-web-deck-engineer`
      - Task: Take the YAML blueprint and use the `guizang-ppt-skill` single HTML template approach to build an interactive HTML web presentation in `[Project_Dir]`.
+
+5. **Dispatch QA Tester (Visual TDD Gate)** — MANDATORY after Engineer completes:
+   - Skill: `presentation-qa-tester`
+   - Task: Export slides to JPG, run visual inspection against the Aesthetic Rubric, and return either a PASS signal or a structured list of QA Tickets.
+   - **On PASS**: Deliver the final `.pptx` to the user. Clean up `qa_slides_tmp/`.
+   - **On FAIL (QA Tickets received)**: Route each ticket based on `issue_type`:
+     - `CONTENT_OVERFLOW` → Re-dispatch **Narrative Strategist** to trim content, then back to Engineer → QA loop.
+     - `LAYOUT_MISMATCH` → Re-dispatch **Art Director** to fix YAML blueprint, then back to Engineer → QA loop.
+     - `RENDER_BUG` → **STOP. Report to user.** Ask for authorization before modifying any template file (e.g., `swiss-simple.js`).
+   - **Retry Limit**: The QA loop may run a maximum of **3 iterations**. If the limit is reached with unresolved issues, pause and present the user with a QA Failure Report listing all unresolved tickets, then await further instructions.
